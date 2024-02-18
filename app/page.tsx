@@ -1,5 +1,4 @@
-
-import { Link } from 'lucide-react';
+import Link from 'next/link'
 import Content from './Content'
 import {
   Sheet,
