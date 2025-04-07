@@ -48,7 +48,7 @@ export default function VisitorCounter() {
       <motion.div
         initial={{ scale: 0.8 }}
         animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 1, repeat: Infinity, repeatDelay: 5 }}
+        transition={{ duration: 1, repeat: Infinity, repeatDelay: 5 }} 
         className="relative w-2.5 h-2.5 min-w-[10px]"
       >
         <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-75"></span>
