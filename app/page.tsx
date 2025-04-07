@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-
+import VisitorCounter from '@/components/ui/VisitorCounter'
 
 export default function Home() {
 
@@ -46,6 +46,7 @@ export default function Home() {
               <div className='h-[100px] border border-white w-[1px] ml-5 ' ></div>
             </div>
         </div>
+        <VisitorCounter />
     </div>
     
   );

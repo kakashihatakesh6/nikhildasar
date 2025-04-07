@@ -23,7 +23,7 @@ const FramerMotionComponent = () => {
 
 
   return (
-    <div className='  pt-0 h-[auto] px-5 font-bold Name-color  ' >
+    <div className='pt-0 h-[auto] px-5 font-bold Name-color  ' >
        <h2 className={`text-7xl md:8xl `}> <span className='sr-only' >{name}</span>
             <motion.span
                 initial="hidden"
