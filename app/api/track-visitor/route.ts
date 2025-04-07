@@ -7,8 +7,8 @@ export async function GET() {
     // Get client IP address from headers
     const headersList = headers();
     const forwardedFor = headersList.get('x-forwarded-for') || '';
-    console.log("my ip address is", forwardedFor)
     const clientIp = forwardedFor.split(',')[0].trim() || '127.0.0.1';
+    console.log("forwardedFor", forwardedFor)
     
     try {
       // Connect directly to MongoDB
