@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { formatISTDate } from '@/lib/utils';
 
 type VisitorStats = {
   totalVisitors: number;
@@ -116,7 +117,7 @@ export default function VisitorStats() {
               <tr className="border-b border-slate-600">
                 <th className="text-left py-1">Country</th>
                 <th className="text-left py-1">City</th>
-                <th className="text-left py-1">Visited At</th>
+                <th className="text-left py-1">Visited At (IST)</th>
               </tr>
             </thead>
             <tbody>

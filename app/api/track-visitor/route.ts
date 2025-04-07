@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import { MongoClient, ServerApiVersion } from 'mongodb';
+import { getCurrentISTTime } from '@/lib/utils';
 
 export async function GET() {
   try {
@@ -53,14 +54,17 @@ export async function GET() {
       const database = client.db();
       const visitorCollection = database.collection('Visitor');
       
+      // Get current time in IST
+      const currentISTTime = getCurrentISTTime();
+      
       // Create a new visitor document
       await visitorCollection.insertOne({
         ipAddress: clientIp === '::1' ? '127.0.0.1' : clientIp,
-        country: 'Unknown', // Simplified without geoip
-        city: 'Unknown',    // Simplified without geoip
-        visitedAt: new Date(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        country: 'India', // Simplified without geoip
+        city: 'kolkata',    // Simplified without geoip
+        visitedAt: currentISTTime,
+        createdAt: currentISTTime,
+        updatedAt: currentISTTime,
         environment: process.env.NODE_ENV || 'unknown', // Track environment
         userAgent: headersList.get('user-agent') || 'unknown'
       });
