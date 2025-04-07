@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Skills from './Skills'
 
 const AboutMe = () => {
-    return ( 
+    return (
         <div className='mt-[5rem] h-[auto] w-[375px] md:m-0 md:w-[720px] ' >
             <div className='stroke-yellow-300  text-[3.50rem] md:text-[6rem] font-extrabold z-0 opacity-80  text-transparent' style={{ strokeWidth: "1.5px", WebkitTextStrokeWidth: "1.9px", WebkitTextStrokeColor: "yellow" }} > {"<"}About Me {"/>"}  </div>
 
@@ -33,10 +33,10 @@ const AboutMe = () => {
                                 <div className='p-3' >  🧑‍💻 Resume</div>
                                 <div className='text-slate-300 px-4 py-2 flex gap-2'> <div>Download Resume</div> <img src='/download.png' width={22} className='cursor-pointer' ></img> </div>
                                 <div className='m-auto  text-center items-center flex justify-center ' >
-                        <a href="nikhil-dasar-resume.pdf" target='blank' download={true} >
-                        <img className='h-[500px] w-[350px] ' src="nikhil-dasar-resume.png"  alt="" />
-                        </a>
-                    </div>
+                                    <a href="nikhil-dasar-resume.pdf" target='blank' download={true} >
+                                        <img className='h-[500px] w-[350px] ' src="nikhil-dasar-resume.png" alt="" />
+                                    </a>
+                                </div>
                             </div>
                         </TabsContent>
                     </Tabs>
