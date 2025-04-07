@@ -1,14 +1,20 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import { MongoClient } from 'mongodb';
+import { NextApiRequest } from 'next';
 
-export async function GET() {
+export async function GET(request: NextApiRequest) {
   try {
     // Get client IP address from headers
     const headersList = headers();
+    const myIp: string | string[] = request.headers['x-forwarded-for'] || '';
     const forwardedFor = headersList.get('x-forwarded-for') || '';
     const clientIp = forwardedFor.split(',')[0].trim() || '127.0.0.1';
-    console.log("forwardedFor", forwardedFor)
+
+    const testip1 = typeof myIp === 'string' ? myIp.split(',')[0] : myIp[0];
+    // const testip2 = myIp.split(',')[1].trim() || '127.0.0.1';
+    // const testip3 = myIp.split(',')[2].trim() || '127.0.0.1';
+    console.log("forwardedFor", testip1)
     
     try {
       // Connect directly to MongoDB
@@ -21,7 +27,7 @@ export async function GET() {
       
       // Create a new visitor document
       await visitorCollection.insertOne({
-        ipAddress: clientIp,
+        ipAddress: clientIp === '::1' ? '127.0.0.1' : clientIp,
         country: 'Unknown', // Simplified without geoip
         city: 'Unknown',    // Simplified without geoip
         visitedAt: new Date(),
