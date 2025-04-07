@@ -32,14 +32,14 @@ const FramerMotionComponent = () => {
                 ref={ref}
                 transition={{ staggerChildren: 0.1 }}
                 >
-                {name.split(" ").map((word) => (
-                <span className='inline-block' >
-                    {word.split('').map((char) => (<motion.span className='inline-block' variants={defaultAnimations}> {char}  </motion.span>))}
+                {name.split(" ").map((word, index) => (
+                <span className='inline-block' key={index} >
+                    {word.split('').map((char, index) => (<motion.span className='inline-block' variants={defaultAnimations} key={index}> {char}  </motion.span>))}
                      <span className='inline-block'> &nbsp; </span>
                 </span>
                 ))}
             </motion.span>
-        </h2>
+        </h2>   
      </div>
     )
 }
