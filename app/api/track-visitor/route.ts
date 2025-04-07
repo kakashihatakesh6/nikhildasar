@@ -1,19 +1,53 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
-import { MongoClient } from 'mongodb';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
 export async function GET() {
   try {
-    // Get client IP address from headers
+    // Get client IP address from headers - Vercel specific headers first
     const headersList = headers();
-    const forwardedFor = headersList.get('x-forwarded-for') || '';
-    const clientIp = forwardedFor.split(',')[0].trim() || '127.0.0.1';
-    console.log("forwardedFor =>", clientIp)
+    
+    // Try multiple header sources that Vercel might use
+    let clientIp = headersList.get('x-real-ip') || 
+                  headersList.get('x-forwarded-for') || 
+                  headersList.get('cf-connecting-ip') || // Cloudflare
+                  '';
+    
+    const testip = headersList.get('x-real-ip');
+    const testip2 = headersList.get('cf-connecting-ip');
+    console.log("headersList =>", testip, testip2)
+    // If x-forwarded-for has multiple IPs, get the first one
+    if (clientIp && clientIp.includes(',')) {
+      clientIp = clientIp.split(',')[0].trim();
+    }
+    
+    // Default fallback
+    if (!clientIp) {
+      clientIp = '127.0.0.1';
+    }
+    
+    console.log("Client IP =>", clientIp);
+    
+    // Get connection string from environment variables
+    const uri = process.env.DATABASE_URL || '';
+    
+    if (!uri) {
+      console.error('DATABASE_URL environment variable is missing');
+      return NextResponse.json({ 
+        success: false, 
+        message: 'Database configuration error' 
+      }, { status: 500 });
+    }
     
     try {
-      // Connect directly to MongoDB
-      const uri = process.env.DATABASE_URL || '';
-      const client = new MongoClient(uri);
+      // Connect to MongoDB with modern options
+      const client = new MongoClient(uri, {
+        serverApi: {
+          version: ServerApiVersion.v1,
+          strict: true,
+          deprecationErrors: true,
+        }
+      });
       
       await client.connect();
       const database = client.db();
@@ -26,35 +60,34 @@ export async function GET() {
         city: 'Unknown',    // Simplified without geoip
         visitedAt: new Date(),
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        environment: process.env.NODE_ENV || 'unknown', // Track environment
+        userAgent: headersList.get('user-agent') || 'unknown'
       });
       
       await client.close();
       
       return NextResponse.json({ 
         success: true, 
-        message: 'Visitor tracked successfully'
+        message: 'Visitor tracked successfully',
+        data: { ip: clientIp }
       });
     } catch (dbError) {
       console.error('Database operation failed:', dbError);
-      // Return a simplified success response even if DB fails
-      // This prevents client-side errors from showing
       return NextResponse.json({ 
-        success: true, 
-        message: 'Visitor record processed'
-      });
+        success: false, 
+        message: 'Database operation failed' 
+      }, { status: 500 });
     }
   } catch (error) {
     console.error('Error tracking visitor:', error);
-    // Log more details about the error
     if (error instanceof Error) {
       console.error(`Error name: ${error.name}, message: ${error.message}`);
     }
     
-    // Always return success to the client to prevent errors showing
     return NextResponse.json({ 
-      success: true, 
-      message: 'Visitor tracking handled'
-    });
+      success: false, 
+      message: 'Server error' 
+    }, { status: 500 });
   }
 } 
