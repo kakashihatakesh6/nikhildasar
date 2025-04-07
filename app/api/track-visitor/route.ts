@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import { MongoClient } from 'mongodb';
-import { NextApiRequest } from 'next';
 
-export async function GET(request: NextApiRequest) {
+export async function GET() {
   try {
     // Get client IP address from headers
     const headersList = headers();
