@@ -1,26 +1,84 @@
 version: "3.8"
 
 services:
-  nextjs-dev:
+  nextjs:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: nextjs-dev
-    volumes:
-      - .:/app
-      - /app/node_modules
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=development
-    command: npm run dev
-
-  nextjs-prod:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: nextjs-prod
+    container_name: nextjs-app
     ports:
       - "3001:3001"
     environment:
       - NODE_ENV=production
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# version: "3.8"
+
+# services:
+#   nextjs-dev:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: nextjs-dev
+#     volumes:
+#       - .:/app
+#       - /app/node_modules
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - NODE_ENV=development
+#     command: npm run dev
+
+#   nextjs-prod:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: nextjs-prod
+#     ports:
+#       - "3001:3001"
+#     environment:
+#       - NODE_ENV=production
