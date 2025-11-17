@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 import { getCurrentISTTime } from '@/lib/utils';
+import logger from '@/lib/logger';
 
 export async function GET() {
   try {
@@ -16,7 +17,7 @@ export async function GET() {
     
     const testip = headersList.get('x-real-ip');
     const testip2 = headersList.get('cf-connecting-ip');
-    console.log("headersList =>", testip, testip2)
+    logger.info("headersList =>", { testip, testip2 });
     // If x-forwarded-for has multiple IPs, get the first one
     if (clientIp && clientIp.includes(',')) {
       clientIp = clientIp.split(',')[0].trim();
@@ -27,13 +28,13 @@ export async function GET() {
       clientIp = '127.0.0.1';
     }
     
-    console.log("Client IP =>", clientIp);
+    logger.info("Client IP =>", { clientIp });
     
     // Get connection string from environment variables
     const uri = process.env.DATABASE_URL || '';
     
     if (!uri) {
-      console.error('DATABASE_URL environment variable is missing');
+      logger.error('DATABASE_URL environment variable is missing');
       return NextResponse.json({ 
         success: false, 
         message: 'Database configuration error' 
@@ -77,16 +78,16 @@ export async function GET() {
         data: { ip: clientIp }
       });
     } catch (dbError) {
-      console.error('Database operation failed:', dbError);
+      logger.error('Database operation failed:', dbError);
       return NextResponse.json({ 
         success: false, 
         message: 'Database operation failed' 
       }, { status: 500 });
     }
   } catch (error) {
-    console.error('Error tracking visitor:', error);
+    logger.error('Error tracking visitor:', error);
     if (error instanceof Error) {
-      console.error(`Error name: ${error.name}, message: ${error.message}`);
+      logger.error(`Error name: ${error.name}, message: ${error.message}`);
     }
     
     return NextResponse.json({ 
