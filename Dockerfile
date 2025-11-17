@@ -23,12 +23,17 @@ ENV NODE_ENV=production
 COPY package*.json ./
 RUN npm ci --only=production && npm cache clean --force
 
+# --- REQUIRED FOR PERSISTENT LOGS ---
+# Create logs folder that will be mapped to EC2 host
+RUN mkdir -p /app/logs && chmod -R 777 /app/logs
+
 # Copy build output & public files
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 
 EXPOSE 3001
-CMD ["npm", "start"]
+CMD ["sh", "-c", "npm start > /app/logs/app.log 2>&1"]
+#CMD ["npm", "start"]
 
 
 
