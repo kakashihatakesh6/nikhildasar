@@ -1,7 +1,17 @@
 'use client';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function NotFound() {
+  useEffect(() => {
+    fetch('/api/log-404', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ url: window.location.pathname }),
+    }).catch((err) => console.error('Failed to log 404 from not-found page:', err));
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
