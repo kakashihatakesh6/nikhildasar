@@ -20,7 +20,8 @@ const logFormat = winston.format.printf(({ timestamp, level, message, ...meta })
 });
 
 const logger = winston.createLogger({
-  level: process.env.NODE_ENV === 'production' ? 'warn' : 'info',
+  // level: process.env.NODE_ENV === 'production' ? 'warn' : 'info',
+  level: process.env.NODE_ENV === 'production' ? 'info' : 'info',
   format: winston.format.combine(
     customTimestampFormat,
     winston.format.json(),

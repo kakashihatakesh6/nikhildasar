@@ -10,6 +10,8 @@ services:
       - "3001:3001"
     environment:
       - NODE_ENV=production
+    env_file:
+      - .env
     volumes:
       - /var/log/nextjs:/app/logs
 
