@@ -5,7 +5,8 @@ WORKDIR /app
 
 # Install deps (including dev for build)
 COPY package*.json ./
-RUN npm ci
+RUN npm install
+#RUN npm ci
 
 # Copy source
 COPY . .
@@ -21,7 +22,8 @@ ENV NODE_ENV=production
 
 # Install only production dependencies
 COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
+#RUN npm ci --only=production && npm cache clean --force
+RUN npm install --only=production && npm cache clean --force
 
 # --- REQUIRED FOR PERSISTENT LOGS ---
 # Create logs folder that will be mapped to EC2 host
