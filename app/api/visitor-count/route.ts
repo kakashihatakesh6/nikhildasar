@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { MongoClient } from 'mongodb';
+import logger from '@/lib/logger';
 
 export async function GET() {
   try {
@@ -20,10 +21,10 @@ export async function GET() {
       totalVisitors
     });
   } catch (error) {
-    console.error('Error fetching visitor count:', error);
+    logger.error('Error fetching visitor count:', error);
     
     if (error instanceof Error) {
-      console.error(`Error name: ${error.name}, message: ${error.message}`);
+      logger.error(`Error name: ${error.name}, message: ${error.message}`);
     }
     
     return NextResponse.json({

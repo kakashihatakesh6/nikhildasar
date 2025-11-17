@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { MongoClient, Document } from 'mongodb';
+import logger from '@/lib/logger';
 
 // Define types to avoid TypeScript errors
 type CountryData = {
@@ -35,7 +36,7 @@ export async function GET() {
     try {
       totalVisitors = await visitorCollection.countDocuments();
     } catch (countError) {
-      console.error('Error counting visitors:', countError);
+      logger.error('Error counting visitors:', countError);
     }
 
     // Initialize arrays with proper types
@@ -87,7 +88,7 @@ export async function GET() {
         updatedAt: doc.updatedAt || new Date()
       })) as VisitorData[];
     } catch (aggregationError) {
-      console.error('Error processing visitor data:', aggregationError);
+      logger.error('Error processing visitor data:', aggregationError);
     }
 
     await client.close();
@@ -102,11 +103,11 @@ export async function GET() {
       }
     });
   } catch (error) {
-    console.error('Error fetching visitor stats:', error);
+    logger.error('Error fetching visitor stats:', error);
     
     // Log more details about the error
     if (error instanceof Error) {
-      console.error(`Error name: ${error.name}, message: ${error.message}`);
+      logger.error(`Error name: ${error.name}, message: ${error.message}`);
     }
     
     // Return a fallback response with empty stats to prevent UI errors
