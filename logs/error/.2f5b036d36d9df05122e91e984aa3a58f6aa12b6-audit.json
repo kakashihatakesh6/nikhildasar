@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\error\\.2f5b036d36d9df05122e91e984aa3a58f6aa12b6-audit.json",
+    "files": [
+        {
+            "date": 1763407065106,
+            "name": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\error\\2025-11-18-error.log",
+            "hash": "0edb0b604da2da4b59d183a7eeda91d327debbb4f13bb69ae8b5d89d596d0041"
+        }
+    ],
+    "hashType": "sha256"
+}
