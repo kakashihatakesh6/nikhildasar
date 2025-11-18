@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Content from './Content'
+import Content from '../components/Content'
 import {
   Sheet,
   SheetContent,
@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import VisitorCounter from '@/components/ui/VisitorCounter'
+import VisitorCounter from '@/components/VisitorCounter'
 
 export default function Home() {
 
