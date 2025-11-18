@@ -19,6 +19,7 @@ FROM node:22.18.0-alpine AS runner
 
 WORKDIR /app
 ENV NODE_ENV=production
+ENV TZ=Etc/UTC
 
 # Install only production dependencies
 COPY package*.json ./
@@ -27,7 +28,7 @@ RUN npm install --only=production && npm cache clean --force
 
 # --- REQUIRED FOR PERSISTENT LOGS ---
 # Create logs folder that will be mapped to EC2 host
-RUN mkdir -p /app/logs /app/logs/daily /app/logs/error && chmod -R 777 /app/logs
+RUN mkdir -p /app/logs/daily /app/logs/error && chmod -R 777 /app/logs
 
 # Copy build output & public files
 COPY --from=builder /app/.next ./.next
