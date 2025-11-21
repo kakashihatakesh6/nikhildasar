@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import * as tar from "tar";
 
+// setting up the path to archive
 const logsBaseDir = path.join(process.cwd(), "logs");
 const dailyLogsDir = path.join(logsBaseDir, "daily");
 const errorLogsDir = path.join(logsBaseDir, "error");
