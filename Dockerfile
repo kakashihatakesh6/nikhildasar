@@ -21,14 +21,26 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV TZ=Etc/UTC
 
+# Install cron and bash for scheduling
+RUN apk add --no-cache cron bash
+
 # Install only production dependencies
 COPY package*.json ./
 #RUN npm ci --only=production && npm cache clean --force
 RUN npm install --only=production && npm cache clean --force
+# Install ts-node specifically for the archive script
+RUN npm install ts-node
 
 # --- REQUIRED FOR PERSISTENT LOGS ---
 # Create logs folder that will be mapped to EC2 host
 RUN mkdir -p /app/logs/daily /app/logs/error && chmod -R 777 /app/logs
+
+# Copy log-archiver directory
+COPY --from=builder /app/log-archiver ./log-archiver
+
+# Create a cron job to run the log archiver daily at 2:00 AM
+# Note: This assumes /usr/bin/npm is in the PATH when cron runs. If not, use the full path to npm.
+RUN echo "0 2 * * * /usr/bin/npm run archive-logs >> /var/log/cron.log 2>&1" | crontab -
 
 # Copy build output & public files
 COPY --from=builder /app/.next ./.next
@@ -36,7 +48,8 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.mjs ./next.config.mjs
 
 EXPOSE 3001
-CMD ["npm", "start"]
+# Start cron and then the Next.js app
+CMD ["sh", "-c", "cron && npm start"]
 #CMD ["npm", "start"]
 
 
