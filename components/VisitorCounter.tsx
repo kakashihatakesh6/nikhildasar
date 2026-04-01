@@ -92,7 +92,7 @@ export default function VisitorCounter() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
                   >
-                    {(visitorCount + 417).toLocaleString()}
+                    {visitorCount.toLocaleString()}
                   </motion.span>
                 )}
               </span>
@@ -145,7 +145,7 @@ export default function VisitorCounter() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                {(visitorCount + 417).toLocaleString()}
+                {visitorCount.toLocaleString()}
               </motion.span>
             )}
           </span>
