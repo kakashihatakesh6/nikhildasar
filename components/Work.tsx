@@ -148,7 +148,7 @@ const projects: ProjectProps[] = [
   },
   {
     title: "Spenza AI - (Expense Tracker - Android App)",
-    link: "https://github.com/kakashihatakesh6/expense-tracker/",
+    link: "https://github.com/kakashihatakesh6/spenza-ai/",
     image: "/mobile/spenza.png",
     category: "mobile",
     downloadUrl: "https://drive.google.com/file/d/1b93-98MeezU0jNvOirX9Z1rj21AB3I0S/view?usp=drive_link",
