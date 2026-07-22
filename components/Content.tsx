@@ -1,5 +1,6 @@
 import AboutMe from './AboutMe';
 import Work from './Work';
+import Contact from './Contact';
 import GitHubCalendarComponent from './GitHubCalendar';
 import TypeWriterComponent from './TypeWriterComponent';
 import FramerMotionComponent from './FramerMotionComponent';
@@ -21,12 +22,8 @@ const Body = () => {
                 <GitHubCalendarComponent/>
                 <AboutMe />
                 <Work/>
-            {/* CONTACT */}
-            {/* <div className='mt-[5rem] h-[auto]  w-[750px] border-x border-white' >
-                     <div className='stroke-yellow-300 text-[6rem] font-extrabold z-0 opacity-80  text-transparent' style={{ strokeWidth: "1.5px", WebkitTextStrokeWidth: "1.9px", WebkitTextStrokeColor: "yellow" }} > {"<"}Contact me {"/>"}   </div>
-               </div> */}
-               {/* <VisitorStats /> */}
-               <Footer/>
+                <Contact />
+                <Footer/>
         </div>
     )
 }
