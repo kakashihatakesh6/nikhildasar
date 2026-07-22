@@ -9,44 +9,122 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import VisitorCounter from '@/components/VisitorCounter'
+import { MessageCircle, FileText, Linkedin, Github, Twitter } from 'lucide-react'
 
 export default function Home() {
 
   return (
-    <div className="w-screen h-screen " >
+    <div className="w-screen h-screen relative" >
       <div className='overlay'></div>
-        <video src="/bg.mp4" loop autoPlay muted playsInline className="h-[100%] w-[100%] object-cover"></video>
-        <div className='content flex  ' >
-            <div className='w-[640px] m-auto border-[0.05px] border-opacity-5 border-white h-[auto]'>
-              <div className='px-4 pt-2 absolute text-white md:hidden' >
+      <video src="/bg.mp4" loop autoPlay muted playsInline className="h-[100%] w-[100%] object-cover"></video>
+      
+      {/* Top Left ND Logo */}
+      <Link href="/" className="absolute top-6 left-6 z-50 flex items-center justify-center font-extrabold text-2xl tracking-widest text-slate-100 cursor-pointer select-none group">
+        <span className="text-yellow-400 group-hover:text-white transition-colors duration-300">N</span>
+        <span className="text-white group-hover:text-yellow-400 transition-colors duration-300">D</span>
+        <span className="absolute -inset-2 bg-yellow-400/10 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      </Link>
+
+      <div className='content flex' >
+          <div className='w-[640px] m-auto border-[0.05px] border-opacity-5 border-white h-[auto] relative'>
+            
+            {/* Mobile Hamburger menu shifted to the top right */}
+            <div className='px-4 pt-4 absolute right-4 top-2 text-white md:hidden z-50' >
               <Sheet>
                 <SheetTrigger> <img src="/burger.png" alt="" /> </SheetTrigger>
-                  <SheetContent className='bg-slate-950 bg-opacity-40 border-none text-slate-400' >
-                    <SheetHeader>
-                      <SheetTitle className='text-slate-400 text-center text-xl'>CONNECT WITH ME</SheetTitle>
-                      <SheetDescription className='text-slate-400'>
+                <SheetContent className='bg-slate-950 bg-opacity-40 border-none text-slate-400' >
+                  <SheetHeader>
+                    <SheetTitle className='text-slate-400 text-center text-xl'>CONNECT WITH ME</SheetTitle>
+                    <SheetDescription className='text-slate-400'>
                       <div className='text-slate-400 flex flex-col w-[50px] m-auto h-70% justify-evenly gap-6'>
-                        <div><Link target='blank'  href={'https://twitter.com/Kakashish6'}><img src="/twitterWhite.png" className='cursor-pointer mt-8' width={37} alt="" /></Link></div>
-                        <div><Link target='blank' href={'https://github.com/kakashihatakesh6'}><img src="/githubwhite.png" className='cursor-pointer' width={37} alt="" /></Link></div>
-                        <div><Link target='blank' href={'https://www.linkedin.com/in/nikhil-dasar-baa2a5217/'}> <img src="/linkedinwhite.png" className='cursor-pointer' width={37} alt="" /></Link></div>
+                        <div><a target='_blank' rel="noopener noreferrer" href={'https://twitter.com/Kakashish6'}><img src="/twitterWhite.png" className='cursor-pointer mt-8' width={37} alt="" /></a></div>
+                        <div><a target='_blank' rel="noopener noreferrer" href={'https://github.com/kakashihatakesh6'}><img src="/githubwhite.png" className='cursor-pointer' width={37} alt="" /></a></div>
+                        <div><a target='_blank' rel="noopener noreferrer" href={'https://www.linkedin.com/in/nikhil-dasar-baa2a5217/'}> <img src="/linkedinwhite.png" className='cursor-pointer' width={37} alt="" /></a></div>
                         <div className='h-[100px] border border-white w-[1px] ml-5'></div>
                       </div>
-                      </SheetDescription>
-                
-                    </SheetHeader>
-                  </SheetContent>
+                    </SheetDescription>
+                  </SheetHeader>
+                </SheetContent>
               </Sheet>
+            </div>
+            
+            <Content />    
+          </div>
+
+          {/* Floating Left Side Menu (WhatsApp & Resume) - Expands Right */}
+          <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4">
+            <a 
+              target="_blank" 
+              rel="noopener noreferrer"
+              href="https://wa.me/917989397686"
+              className="flex items-center gap-0 w-12 hover:w-36 h-12 bg-slate-900/80 hover:bg-emerald-500 hover:text-white border-y border-r border-slate-800/80 hover:border-emerald-500 rounded-r-2xl overflow-hidden cursor-pointer shadow-lg transition-all duration-300 group"
+            >
+              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0 text-slate-300 group-hover:text-white">
+                <MessageCircle className="w-5 h-5" />
               </div>
-              <Content />    
-            </div>
-            <div className='flex-col hidden md:flex h-screen justify-center m-5 gap-6 mt-28'>
-              <div><Link target='blank'  href={'https://twitter.com/Kakashish6'}><img src="/twitterWhite.png" className='cursor-pointer' width={37} alt="" /></Link></div>
-              <div><Link target='blank' href={'https://github.com/kakashihatakesh6'}><img src="/githubwhite.png" className='cursor-pointer' width={37} alt="" /></Link></div>
-              <div><Link target='blank' href={'https://www.linkedin.com/in/nikhil-dasar-baa2a5217/'}> <img src="/linkedinwhite.png" className='cursor-pointer' width={37} alt="" /></Link></div>
-              <div className='h-[100px] border border-white w-[1px] ml-5 ' ></div>
-            </div>
-        </div>
-        <VisitorCounter />
+              <span className="opacity-0 group-hover:opacity-100 text-[10px] font-extrabold uppercase tracking-wider whitespace-nowrap transition-all duration-300 pr-4 pl-1">
+                WhatsApp
+              </span>
+            </a>
+            <a 
+              target="_blank" 
+              rel="noopener noreferrer"
+              href="/nikhil-dasar-resume.pdf"
+              className="flex items-center gap-0 w-12 hover:w-44 h-12 bg-slate-900/80 hover:bg-yellow-400 hover:text-black border-y border-r border-slate-800/80 hover:border-yellow-400 rounded-r-2xl overflow-hidden cursor-pointer shadow-lg transition-all duration-300 group"
+            >
+              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0 text-slate-300 group-hover:text-black">
+                <FileText className="w-5 h-5" />
+              </div>
+              <span className="opacity-0 group-hover:opacity-100 text-[10px] font-extrabold uppercase tracking-wider whitespace-nowrap transition-all duration-300 pr-4 pl-1">
+                Download CV
+              </span>
+            </a>
+          </div>
+
+          {/* Floating Right Side Menu (LinkedIn, GitHub, Twitter) - Expands Left */}
+          <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4 font-sans">
+            <a 
+              target="_blank" 
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/nikhil-dasar-baa2a5217/"
+              className="flex flex-row-reverse items-center gap-0 w-12 hover:w-36 h-12 bg-slate-900/80 hover:bg-blue-600 hover:text-white border-y border-l border-slate-800/80 hover:border-blue-600 rounded-l-2xl overflow-hidden cursor-pointer shadow-lg transition-all duration-300 group"
+            >
+              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0 text-slate-300 group-hover:text-white">
+                <Linkedin className="w-5 h-5" />
+              </div>
+              <span className="opacity-0 group-hover:opacity-100 text-[10px] font-extrabold uppercase tracking-wider whitespace-nowrap transition-all duration-300 pl-4 pr-1">
+                LinkedIn
+              </span>
+            </a>
+            <a 
+              target="_blank" 
+              rel="noopener noreferrer"
+              href="https://github.com/kakashihatakesh6"
+              className="flex flex-row-reverse items-center gap-0 w-12 hover:w-32 h-12 bg-slate-900/80 hover:bg-slate-700 hover:text-white border-y border-l border-slate-800/80 hover:border-slate-700 rounded-l-2xl overflow-hidden cursor-pointer shadow-lg transition-all duration-300 group"
+            >
+              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0 text-slate-300 group-hover:text-white">
+                <Github className="w-5 h-5" />
+              </div>
+              <span className="opacity-0 group-hover:opacity-100 text-[10px] font-extrabold uppercase tracking-wider whitespace-nowrap transition-all duration-300 pl-4 pr-1">
+                GitHub
+              </span>
+            </a>
+            <a 
+              target="_blank" 
+              rel="noopener noreferrer"
+              href="https://twitter.com/Kakashish6"
+              className="flex flex-row-reverse items-center gap-0 w-12 hover:w-32 h-12 bg-slate-900/80 hover:bg-sky-500 hover:text-white border-y border-l border-slate-800/80 hover:border-sky-500 rounded-l-2xl overflow-hidden cursor-pointer shadow-lg transition-all duration-300 group"
+            >
+              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0 text-slate-300 group-hover:text-white">
+                <Twitter className="w-5 h-5" />
+              </div>
+              <span className="opacity-0 group-hover:opacity-100 text-[10px] font-extrabold uppercase tracking-wider whitespace-nowrap transition-all duration-300 pl-4 pr-1">
+                Twitter
+              </span>
+            </a>
+          </div>
+      </div>
+      <VisitorCounter />
     </div>
     
   );
