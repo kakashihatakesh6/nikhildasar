@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter , Raleway } from "next/font/google";
+import { Inter, Raleway } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const raleway = Raleway({ subsets: [ "latin"] });
+const raleway = Raleway({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Nikhil Dasar",

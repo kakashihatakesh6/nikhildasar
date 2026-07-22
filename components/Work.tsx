@@ -748,9 +748,9 @@ const Work = () => {
   const filteredProjects = projects.filter(project => project.category === activeTab);
 
   return (
-    <div className="mt-[5rem] h-[auto] w-[360px] md:w-[720px] flex flex-col">
+    <div className="mt-[5rem] h-[auto] w-[360px] md:w-[720px] flex flex-col" id="work">
       <div 
-        className="stroke-yellow-300 text-[5rem] md:text-[6rem] font-extrabold z-0 opacity-80 text-transparent select-none leading-none mb-6" 
+        className="stroke-yellow-300 text-[2.5rem] xs:text-[3rem] sm:text-[4rem] md:text-[6rem] font-extrabold z-0 opacity-80 text-transparent select-none leading-none mb-6 whitespace-nowrap" 
         style={{ strokeWidth: "1.5px", WebkitTextStrokeWidth: "1.9px", WebkitTextStrokeColor: "yellow" }}
       >
         {"<"}Work {"/>"}
