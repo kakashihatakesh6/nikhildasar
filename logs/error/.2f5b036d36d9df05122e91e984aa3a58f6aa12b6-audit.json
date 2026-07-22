@@ -6,9 +6,14 @@
     "auditLog": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\error\\.2f5b036d36d9df05122e91e984aa3a58f6aa12b6-audit.json",
     "files": [
         {
-            "date": 1775048556238,
-            "name": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\error\\2026-04-01-error.log",
-            "hash": "5bc2fd90887ad29a76b83d878231bd0088c82203b828a5473c3f41db22144a42"
+            "date": 1784657150876,
+            "name": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\error\\2026-07-21-error.log",
+            "hash": "53cd53e4ec2a6ee41387a70ea65cfdac7b9cde090f3736462ef90a7d6f420d8d"
+        },
+        {
+            "date": 1784698515561,
+            "name": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\error\\2026-07-22-error.log",
+            "hash": "3259c9d339dac22025b36ee5add7054c906a09d8caf9e63c14ca351eca1bacde"
         }
     ],
     "hashType": "sha256"
