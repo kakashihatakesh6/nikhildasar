@@ -151,7 +151,8 @@ const projects: ProjectProps[] = [
     link: "https://github.com/kakashihatakesh6/expense-tracker/",
     image: "/mobile/spenza.png",
     category: "mobile",
-    downloadUrl: "https://github.com/kakashihatakesh6/expense-tracker/releases",
+    downloadUrl: "https://drive.google.com/file/d/1b93-98MeezU0jNvOirX9Z1rj21AB3I0S/view?usp=drive_link",
+    videoUrl: "/mobile/spenza.mp4",
     description: "A mobile financial dashboard application designed to manage daily expenditures, structure monthly budgeting, and generate smart statistical insights.",
     features: [
       "Visual charts displaying transaction history categories and budget limits",
@@ -175,7 +176,7 @@ const projects: ProjectProps[] = [
     link: "https://github.com/kakashihatakesh6/shopify",
     image: "/mobile/shopiffy.png",
     category: "mobile",
-    downloadUrl: "https://github.com/kakashihatakesh6/shopify/releases",
+    downloadUrl: "https://drive.google.com/file/d/1b93-98MeezU0jNvOirX9Z1rj21AB3I0S/view?usp=drive_link",
     description: "A fully features, native-feel android application bringing standard e-commerce workflows, reviews, checkouts, and tracking to mobile screens.",
     features: [
       "Fluid page navigation and transitions optimized for mobile gesture inputs",
@@ -199,7 +200,7 @@ const projects: ProjectProps[] = [
     link: "https://github.com/kakashihatakesh6/Pay_Per_Parking",
     image: "/mobile/payperparking.png",
     category: "mobile",
-    downloadUrl: "https://github.com/kakashihatakesh6/Pay_Per_Parking/releases",
+    downloadUrl: "https://drive.google.com/file/d/1b93-98MeezU0jNvOirX9Z1rj21AB3I0S/view?usp=drive_link",
     description: "A premium mobile system matching drivers with available parking spaces in real-time. Features geographical slot mapping and reservations.",
     features: [
       "Google Maps API tracking to view nearby available garage parking zones",
@@ -231,6 +232,37 @@ interface ProjectCardProps extends ProjectProps {
 }
 
 const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, techStack, downloadUrl, github, onOpenModal }) => {
+  const hoverTimeoutRef = React.useRef<any>(null);
+
+  const handleMouseEnter = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      onOpenModal();
+    }, 200);
+  };
+
+  const handleMouseLeave = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  };
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    onOpenModal();
+  };
+
+  React.useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   let mainTitle = title;
   let subTitle = "";
   
@@ -254,7 +286,9 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
 
   return (
     <div 
-      onClick={onOpenModal}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleCardClick}
       className="border-slate-800 bg-slate-900/20 backdrop-blur-md border w-[330px] h-[490px] m-3 p-5 hover:border-yellow-400/40 hover:bg-slate-900/40 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.6),_0_0_25px_rgba(234,179,8,0.12)] hover:-translate-y-1.5 duration-300 transition-all rounded-2xl flex flex-col justify-between group cursor-pointer animate-in fade-in zoom-in-95 duration-200"
     >
       <div>
@@ -278,9 +312,16 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
         <div className="w-full h-[180px] overflow-hidden rounded-xl bg-slate-950/50 flex items-center justify-center border border-slate-800/50 relative group/img">
           <img 
             src={image} 
-            className="opacity-80 group-hover:opacity-100 max-w-[90%] max-h-[85%] object-contain transition-all duration-500 group-hover/img:scale-[1.04]" 
+            className="opacity-80 group-hover:opacity-100 max-w-[90%] max-h-[85%] object-contain transition-all duration-500 group-hover:scale-105" 
             alt={title} 
           />
+          {/* Interactive Hover Overlay */}
+          <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+            <span className="px-4 py-2 bg-yellow-400 text-black text-xs font-extrabold rounded-full shadow-lg shadow-yellow-400/25 transform translate-y-3 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1.5 select-none">
+              <span>View Details</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </span>
+          </div>
         </div>
       </div>
       
@@ -411,10 +452,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
       className="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-[100] flex items-center justify-center p-4 md:p-6 cursor-pointer"
     >
       <motion.div
-        initial={{ scale: 0.95, opacity: 0, y: 20 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.95, opacity: 0, y: 20 }}
-        transition={{ type: 'spring', duration: 0.5 }}
+        initial={{ scale: 0.9, opacity: 0, y: 30, rotateX: 12 }}
+        animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 30, rotateX: -12 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+        style={{ transformPerspective: 1200 }}
         onClick={(e) => e.stopPropagation()}
         className="relative bg-slate-900/95 border border-slate-800/80 w-full max-w-5xl h-[85vh] md:h-[80vh] rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-[0_0_50px_rgba(0,0,0,0.8)] cursor-default"
       >
