@@ -109,7 +109,7 @@ const projects: ProjectProps[] = [
   {
     title: "Spenza AI - (Expense Tracker - Android App)",
     link: "https://github.com/kakashihatakesh6/expense-tracker/",
-    image: "/spenza/mb3.jpg",
+    image: "/mobile/spenza.png",
     category: "mobile",
     downloadUrl: "https://github.com/kakashihatakesh6/expense-tracker/releases",
     techStack: [
@@ -126,7 +126,7 @@ const projects: ProjectProps[] = [
   {
     title: "Shopify - (E-Commerce - Android App)",
     link: "https://github.com/kakashihatakesh6/shopify",
-    image: "/shopify/shopify-bg.png",
+    image: "/mobile/shopiffy.png",
     category: "mobile",
     downloadUrl: "https://github.com/kakashihatakesh6/shopify/releases",
     techStack: [
@@ -143,7 +143,7 @@ const projects: ProjectProps[] = [
   {
     title: "Pay Per Parking - (Vehicle Parking Booking Application)",
     link: "https://github.com/kakashihatakesh6/Pay_Per_Parking",
-    image: "/payperparking.png",
+    image: "/mobile/payperparking.png",
     category: "mobile",
     downloadUrl: "https://github.com/kakashihatakesh6/Pay_Per_Parking/releases",
     techStack: [
