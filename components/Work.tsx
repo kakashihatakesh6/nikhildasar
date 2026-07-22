@@ -16,6 +16,7 @@ interface ProjectProps {
   category: 'web' | 'mobile';
   techStack: TechStack[];
   downloadUrl?: string;
+  github?: string;
 }
 
 const projects: ProjectProps[] = [
@@ -24,6 +25,7 @@ const projects: ProjectProps[] = [
     link: "https://shop-vistaa.netlify.app/",
     image: "/Shop-vista.png",
     category: "web",
+    github: "https://github.com/kakashihatakesh6/Shop-Vista",
     techStack: [
       { name: "Next JS", image: "/nextjs.png" },
       { name: "React JS", image: "/react.png" },
@@ -41,6 +43,7 @@ const projects: ProjectProps[] = [
     link: "https://tickora-new.vercel.app/",
     image: "/tickora-thumbnail.png",
     category: "web",
+    github: "https://github.com/kakashihatakesh6/Tickora-Booking",
     techStack: [
       { name: "Next JS", image: "/nextjs.png" },
       { name: "React JS", image: "/react.png" },
@@ -58,6 +61,7 @@ const projects: ProjectProps[] = [
     link: "https://moviepot-rosy.vercel.app/auth",
     image: "/netflix.png",
     category: "web",
+    github: "https://github.com/kakashihatakesh6/Netflix-Clone",
     techStack: [
       { name: "Next JS", image: "/nextjs.png" },
       { name: "React JS", image: "/react.png" },
@@ -75,6 +79,7 @@ const projects: ProjectProps[] = [
     link: "https://new-shopvista.vercel.app/",
     image: "/new_shop_vista.png",
     category: "web",
+    github: "https://github.com/kakashihatakesh6/New-Shop-Vista",
     techStack: [
       { name: "Next JS", image: "/nextjs.png" },
       { name: "React JS", image: "/react.png" },
@@ -92,6 +97,7 @@ const projects: ProjectProps[] = [
     link: "https://sagess.netlify.app/",
     image: "/sages.png",
     category: "web",
+    github: "https://github.com/kakashihatakesh6/School-Website",
     techStack: [
       { name: "Next JS", image: "/nextjs.png" },
       { name: "React JS", image: "/react.png" },
@@ -159,7 +165,7 @@ const TechStackItem: React.FC<TechStack> = ({ name, image }) => (
   </div>
 );
 
-const Project: React.FC<ProjectProps> = ({ title, link, image, category, techStack, downloadUrl }) => {
+const Project: React.FC<ProjectProps> = ({ title, link, image, category, techStack, downloadUrl, github }) => {
   let mainTitle = title;
   let subTitle = "";
   
@@ -222,15 +228,28 @@ const Project: React.FC<ProjectProps> = ({ title, link, image, category, techSta
         
         <div className="flex gap-2.5">
           {category === 'web' ? (
-            <a 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              href={link} 
-              className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold rounded-xl transition-all duration-200 text-xs shadow-md shadow-yellow-400/5 hover:shadow-lg hover:shadow-yellow-400/15 active:scale-[0.98]"
-            >
-              <span>Visit Website</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+            <>
+              <a 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                href={link} 
+                className={`${github ? 'flex-1' : 'w-full'} flex items-center justify-center gap-1.5 py-2 px-3 bg-yellow-400 hover:bg-yellow-350 text-black font-extrabold rounded-xl transition-all duration-200 text-xs shadow-md shadow-yellow-400/5 hover:shadow-lg hover:shadow-yellow-400/15 active:scale-[0.98]`}
+              >
+                <span>Visit Site</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+              {github && (
+                <a 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  href={github} 
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-slate-950 border border-slate-800/60 hover:bg-slate-900 hover:border-slate-700 text-slate-300 font-bold rounded-xl transition-all duration-200 text-xs active:scale-[0.98]"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>View Code</span>
+                </a>
+              )}
+            </>
           ) : (
             <>
               <a 
