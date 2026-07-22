@@ -10,6 +10,9 @@ import {
 } from "@/components/ui/sheet"
 import VisitorCounter from '@/components/VisitorCounter'
 import { MessageCircle, FileText, Linkedin, Github, Twitter, Mail } from 'lucide-react'
+import { Bebas_Neue } from 'next/font/google'
+
+const bebasNeue = Bebas_Neue({ weight: '400', subsets: ['latin'] })
 
 export default function Home() {
 
@@ -41,24 +44,27 @@ export default function Home() {
       </a>
 
       {/* Top Right Desktop Navigation Menu */}
-      <div className="absolute top-8 right-8 z-50 hidden md:flex items-center gap-8 lg:gap-10 select-none">
-        <a
-          href="#about"
-          className="text-sm font-black uppercase tracking-[0.2em] text-white hover:text-yellow-400 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+      <div className="absolute top-6 right-8 z-50 hidden md:flex items-center gap-10 select-none">
+        <a 
+          href="#about" 
+          className={`${bebasNeue.className} relative pb-1 group/nav text-xl lg:text-2xl tracking-[0.12em] text-slate-100 hover:text-yellow-400 hover:scale-[1.03] active:scale-95 transition-all duration-300 cursor-pointer`}
         >
-          About
+          <span>About</span>
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover/nav:w-[70%] h-[2.5px] bg-yellow-400 rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(234,179,8,0.8)] pointer-events-none" />
         </a>
-        <a
-          href="#work"
-          className="text-sm font-black uppercase tracking-[0.2em] text-white hover:text-yellow-400 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+        <a 
+          href="#work" 
+          className={`${bebasNeue.className} relative pb-1 group/nav text-xl lg:text-2xl tracking-[0.12em] text-slate-100 hover:text-yellow-400 hover:scale-[1.03] active:scale-95 transition-all duration-300 cursor-pointer`}
         >
-          Work
+          <span>Work</span>
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover/nav:w-[70%] h-[2.5px] bg-yellow-400 rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(234,179,8,0.8)] pointer-events-none" />
         </a>
-        <a
-          href="#contact"
-          className="text-sm font-black uppercase tracking-[0.2em] text-white hover:text-yellow-400 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+        <a 
+          href="#contact" 
+          className={`${bebasNeue.className} relative pb-1 group/nav text-xl lg:text-2xl tracking-[0.12em] text-slate-100 hover:text-yellow-400 hover:scale-[1.03] active:scale-95 transition-all duration-300 cursor-pointer`}
         >
-          Contact
+          <span>Contact</span>
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover/nav:w-[70%] h-[2.5px] bg-yellow-400 rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(234,179,8,0.8)] pointer-events-none" />
         </a>
       </div>
 
