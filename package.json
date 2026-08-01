@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^1.5.4",
     "@prisma/client": "^6.19.0",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-tabs": "^1.0.4",
@@ -32,6 +33,7 @@
     "react-dom": "^18",
     "react-github-calendar": "^4.1.2",
     "react-simple-typewriter": "^5.0.1",
+    "resend": "^6.18.1",
     "split-type": "^0.3.4",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",

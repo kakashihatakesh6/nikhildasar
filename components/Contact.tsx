@@ -1,24 +1,60 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react'
+import { Turnstile, TurnstileInstance } from '@marsidev/react-turnstile'
 
 const Contact = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!turnstileToken) {
+      setError("Please complete the security check.");
+      return;
+    }
+
     setIsSubmitting(true);
-    // Simulate API submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formState,
+          turnstileToken,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to send message. Please try again.');
+      }
+
       setSubmitted(true);
       setFormState({ name: '', email: '', message: '' });
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
+      
       setTimeout(() => setSubmitted(false), 5000);
-    }, 1500);
+    } catch (err: any) {
+      setError(err.message || 'An error occurred. Please try again.');
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -77,6 +113,35 @@ const Contact = () => {
                   className="w-full bg-slate-950/50 border border-slate-800/80 hover:border-slate-700 focus:border-yellow-400 rounded-xl px-4 py-2.5 text-xs text-slate-200 placeholder-slate-500 outline-none transition-all duration-200 resize-none"
                 />
               </div>
+
+              {/* Cloudflare Turnstile */}
+              <div className="flex justify-center w-full">
+                <Turnstile
+                  ref={turnstileRef}
+                  siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''}
+                  onSuccess={(token) => {
+                    setTurnstileToken(token);
+                    setError(null);
+                  }}
+                  onError={() => {
+                    setError("Security verification failed to load. Please refresh the page.");
+                  }}
+                  onExpire={() => {
+                    setTurnstileToken(null);
+                    setError("Security check expired. Please verify again.");
+                  }}
+                  options={{
+                    theme: 'dark',
+                  }}
+                />
+              </div>
+
+              {error && (
+                <div className="text-red-400 text-xs text-center font-medium mt-1">
+                  {error}
+                </div>
+              )}
+
               <button 
                 type="submit" 
                 disabled={isSubmitting}
