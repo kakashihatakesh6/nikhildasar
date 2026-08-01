@@ -31,18 +31,22 @@ export async function sendContactEmail({
   }) + ' (IST)';
 
   return await resend.emails.send({
-    from: 'Portfolio Contact <onboarding@resend.dev>',
-    to: contactEmail,
-    replyTo: email,
-    subject: 'New Portfolio Contact',
-    text: `You have received a new message from your portfolio contact form.
+  from: "Nikhil Dasar Portfolio <onboarding@resend.dev>",
+  to: contactEmail,
+  replyTo: email,
+  subject: "📩 New Contact Form Submission | Nikhil Dasar Portfolio",
+  text: `
+You have received a new contact form submission from your personal portfolio.
 
 Name: ${name}
 Email: ${email}
-Date & Time: ${dateTime}
-Sender IP: ${ipAddress || 'Not available'}
 
 Message:
-${message}`,
-  });
+${message}
+
+---
+Sent from: Nikhil Dasar Portfolio
+Time: ${dateTime}
+`,
+});
 }
