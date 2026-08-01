@@ -151,7 +151,7 @@ const projects: ProjectProps[] = [
     link: "https://github.com/kakashihatakesh6/spenza-ai/",
     image: "/mobile/spenza.png",
     category: "mobile",
-    downloadUrl: "https://drive.google.com/file/d/1b93-98MeezU0jNvOirX9Z1rj21AB3I0S/view?usp=drive_link",
+    downloadUrl: "https://drive.google.com/file/d/1xVBxMh5j5B5HQ62YCztk7x1uJatvt4KF/view?usp=drive_link",
     videoUrl: "/mobile/spenza.mp4",
     description: "A mobile financial dashboard application designed to manage daily expenditures, structure monthly budgeting, and generate smart statistical insights.",
     features: [
