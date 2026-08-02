@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Download, Github, X, ChevronLeft, ChevronRight, Play, Image as ImageIcon, Monitor, Smartphone } from 'lucide-react';
+import { ExternalLink, Download, Github, X, ChevronLeft, ChevronRight, Play, Pause, Image as ImageIcon, Monitor, Smartphone } from 'lucide-react';
 
 interface TechStack {
   name: string;
@@ -736,6 +736,142 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   );
 };
 
+const LatestProjectSection = () => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  const handleTogglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play().catch(() => {});
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const project = projects.find(p => p.title.toLowerCase().includes("spenza")) || projects[5];
+  if (!project) return null;
+
+  return (
+    <div className="w-full border border-slate-800/80 bg-slate-900/10 backdrop-blur-md rounded-3xl p-5 md:p-6 mb-12 relative overflow-hidden group hover:border-yellow-400/30 transition-all duration-500 shadow-2xl">
+      {/* Glow Effects */}
+      <div className="absolute -top-12 -right-12 w-48 h-48 bg-yellow-400/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-yellow-400/10 transition-all duration-500" />
+      <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-blue-500/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-blue-500/10 transition-all duration-500" />
+      
+      <div className="flex flex-col md:flex-row gap-6 items-center">
+        {/* Info Column */}
+        <div className="flex-1 flex flex-col justify-between h-full order-2 md:order-1 self-stretch">
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+              </span>
+              <span className="text-[10px] tracking-widest text-yellow-400 font-extrabold uppercase bg-yellow-400/5 px-2 py-0.5 rounded border border-yellow-400/20 select-none">
+                Latest Release
+              </span>
+              <span className="text-[10px] tracking-widest text-slate-400 font-extrabold uppercase bg-slate-800/50 px-2.5 py-0.5 rounded border border-slate-800/80 flex items-center gap-1 select-none">
+                <Smartphone className="w-3 h-3" /> Android App
+              </span>
+            </div>
+
+            <h3 className="text-xl md:text-2xl font-black text-slate-100 group-hover:text-yellow-400 transition-colors duration-300 leading-tight">
+              Spenza AI
+            </h3>
+            <p className="text-xs text-slate-400 font-semibold mt-1 mb-4">
+              AI-Powered Personal Expense Tracker
+            </p>
+
+            <p className="text-xs text-slate-300 leading-relaxed font-medium mb-4 bg-slate-950/20 border border-slate-800/40 p-3 rounded-xl shadow-inner">
+              {project.description}
+            </p>
+
+            <div className="space-y-2 mb-6">
+              {project.features.slice(0, 3).map((feature, i) => (
+                <div key={i} className="flex items-start gap-2 text-xs text-slate-350">
+                  <span className="text-yellow-400 font-bold select-none">✓</span>
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="text-[9px] font-bold tracking-widest text-slate-500 mb-2 uppercase select-none">TECH STACK</div>
+            <div className="flex flex-wrap gap-1.5 justify-start mb-4">
+              {project.techStack.map((tech, index) => (
+                <TechStackItem key={index} {...tech} />
+              ))}
+            </div>
+
+            <hr className="w-full my-4 border-slate-800/50" />
+
+            <div className="flex gap-3">
+              <a 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                href={project.downloadUrl}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 bg-yellow-400 hover:bg-yellow-350 text-black font-extrabold rounded-xl transition-all duration-200 text-xs shadow-md shadow-yellow-400/5 hover:shadow-lg hover:shadow-yellow-400/15 active:scale-[0.98]"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download APK</span>
+              </a>
+              <a 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                href={project.link}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 bg-slate-950 border border-slate-800/60 hover:bg-slate-900 hover:border-slate-700 text-slate-300 font-bold rounded-xl transition-all duration-200 text-xs active:scale-[0.98]"
+              >
+                <Github className="w-3.5 h-3.5" />
+                <span>View Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Video Mockup Column */}
+        <div className="w-full md:w-auto flex justify-center order-1 md:order-2 flex-shrink-0">
+          <div className="relative w-[180px] h-[340px] md:w-[200px] md:h-[380px] bg-slate-950 border-[6px] border-slate-900 rounded-[32px] shadow-2xl overflow-hidden flex flex-col select-none ring-1 ring-slate-800 transition-transform duration-500 group-hover:scale-[1.02]">
+            {/* Phone Notch */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-slate-900 rounded-b-xl z-20 flex items-center justify-center">
+              <div className="w-8 h-1 bg-slate-800 rounded-full"></div>
+            </div>
+            
+            {/* Glossy Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none z-10" />
+
+            {/* Video Canvas */}
+            <div className="flex-1 w-full h-full bg-slate-950 overflow-hidden relative">
+              <video
+                ref={videoRef}
+                src={project.videoUrl}
+                className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+              
+              {/* Playback Toggle Hover Button */}
+              <div 
+                className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 cursor-pointer"
+                onClick={handleTogglePlay}
+              >
+                <div className="w-12 h-12 rounded-full bg-yellow-400 text-black flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all duration-200">
+                  {isPlaying ? <Pause className="w-5 h-5 fill-current text-black" /> : <Play className="w-5 h-5 fill-current text-black ml-0.5" />}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Work = () => {
   const [activeTab, setActiveTab] = useState<'web' | 'mobile'>('web');
   const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
@@ -755,6 +891,8 @@ const Work = () => {
       >
         {"<"}Work {"/>"}
       </div>
+
+      <LatestProjectSection />
 
       {/* Tabs */}
       <div className="flex justify-start mb-6 px-3">
