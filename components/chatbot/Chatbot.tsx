@@ -124,7 +124,7 @@ export default function Chatbot() {
               }
             }}
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
-            className="fixed bottom-36 right-4 z-50 flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-4 py-2.5 rounded-2xl shadow-xl select-none font-bold text-xs uppercase tracking-wider cursor-pointer border border-yellow-350"
+            className="fixed bottom-20 right-4 z-50 flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-4 py-2.5 rounded-2xl shadow-xl select-none font-bold text-xs uppercase tracking-wider cursor-pointer border border-yellow-350"
             onClick={() => setIsOpen(true)}
           >
             <span className="relative flex h-2 w-2">
@@ -161,7 +161,7 @@ export default function Chatbot() {
             duration: 1.5
           }
         } : {}}
-        className="fixed bottom-20 right-4 z-50 w-12 h-12 rounded-full bg-yellow-400 hover:bg-yellow-350 text-black shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 border border-yellow-300/40"
+        className="fixed bottom-4 right-4 z-50 w-12 h-12 rounded-full bg-yellow-400 hover:bg-yellow-350 text-black shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 border border-yellow-300/40"
         aria-label="Toggle Chatbot"
       >
         {isOpen ? <X className="w-5 h-5" /> : <MessageSquare className="w-5 h-5" />}
@@ -175,7 +175,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed bottom-36 right-4 z-50 w-[320px] xs:w-[350px] sm:w-[400px] h-[500px] max-h-[70vh] bg-slate-950/95 backdrop-blur-xl border border-slate-800/80 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-20 right-4 z-50 w-[320px] xs:w-[350px] sm:w-[400px] h-[500px] max-h-[70vh] bg-slate-950/95 backdrop-blur-xl border border-slate-800/80 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
           >
             <div className="flex items-center justify-between px-5 py-4 bg-slate-900/60 border-b border-slate-800/80">
               <div className="flex items-center gap-2.5">

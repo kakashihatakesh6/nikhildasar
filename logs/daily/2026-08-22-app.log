@@ -244,3 +244,19 @@
 {"timestamp":"22/08/2026, 14:06:18","level":"info","message":"LLM requested tool calls: [{\"name\":\"getExperience\",\"args\":{\"input\":\"\"},\"type\":\"tool_call\",\"id\":\"fc_daaa417d-def1-4f7f-9ffe-a45d82e8670b\"}]"}
 {"timestamp":"22/08/2026, 14:06:18","level":"info","message":"Executing tool: getExperience with args: {\"input\":\"\"}"}
 {"timestamp":"22/08/2026, 14:06:18","level":"info","message":"Calling Groq LLM with tool outputs..."}
+{"timestamp":"22/08/2026, 14:06:37","level":"info","message":"Received chat request: \"Where did Nikhil study, when did he graduate, and what was his major?\""}
+{"timestamp":"22/08/2026, 14:06:37","level":"info","message":"Retrieving knowledge context for query: \"Where did Nikhil study, when did he graduate, and what was his major?\""}
+{"timestamp":"22/08/2026, 14:06:38","level":"info","message":"[VectorStore Debug] Connected DB: \"portfolio\", Collection: \"knowledge_chunks\", Total Docs: 21"}
+{"timestamp":"22/08/2026, 14:06:39","level":"info","message":"Calling Groq LLM (initial turn)..."}
+{"timestamp":"22/08/2026, 14:07:10","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:07:10","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 14:07:11","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:07:11","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 14:07:19","level":"info","message":"Received chat request: \"Where did Nikhil study, when did he graduate, and what was his major?\""}
+{"timestamp":"22/08/2026, 14:07:19","level":"info","message":"Retrieving knowledge context for query: \"Where did Nikhil study, when did he graduate, and what was his major?\""}
+{"timestamp":"22/08/2026, 14:07:19","level":"info","message":"[VectorStore Debug] Connected DB: \"portfolio\", Collection: \"knowledge_chunks\", Total Docs: 21"}
+{"timestamp":"22/08/2026, 14:07:20","level":"info","message":"Calling Groq LLM (initial turn)..."}
+{"timestamp":"22/08/2026, 14:07:29","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:07:29","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 14:07:30","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:07:30","level":"info","message":"Client IP =>","clientIp":"::1"}
