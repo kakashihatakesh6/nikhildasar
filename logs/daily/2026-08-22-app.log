@@ -260,3 +260,22 @@
 {"timestamp":"22/08/2026, 14:07:29","level":"info","message":"Client IP =>","clientIp":"::1"}
 {"timestamp":"22/08/2026, 14:07:30","level":"info","message":"headersList =>","testip":null,"testip2":null}
 {"timestamp":"22/08/2026, 14:07:30","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 14:08:43","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:08:43","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 14:08:44","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:08:44","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 14:09:38","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:09:38","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 14:09:39","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:09:39","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 14:14:12","level":"info","message":"Received chat request: \"What are some key projects built by Nikhil using NextJS?\""}
+{"timestamp":"22/08/2026, 14:14:12","level":"info","message":"Retrieving knowledge context for query: \"What are some key projects built by Nikhil using NextJS?\""}
+{"timestamp":"22/08/2026, 14:14:12","level":"info","message":"[VectorStore Debug] Connected DB: \"portfolio\", Collection: \"knowledge_chunks\", Total Docs: 21"}
+{"timestamp":"22/08/2026, 14:14:13","level":"info","message":"Calling Groq LLM (initial turn)..."}
+{"timestamp":"22/08/2026, 14:14:14","level":"info","message":"LLM requested tool calls: [{\"name\":\"getProjects\",\"args\":{\"input\":\"\"},\"type\":\"tool_call\",\"id\":\"fc_6e5dc3c2-1c02-4552-9e21-9f411f352098\"}]"}
+{"timestamp":"22/08/2026, 14:14:14","level":"info","message":"Executing tool: getProjects with args: {\"input\":\"\"}"}
+{"timestamp":"22/08/2026, 14:14:14","level":"info","message":"Calling Groq LLM with tool outputs..."}
+{"timestamp":"22/08/2026, 14:18:00","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:18:00","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 14:18:01","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 14:18:01","level":"info","message":"Client IP =>","clientIp":"::1"}

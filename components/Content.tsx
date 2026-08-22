@@ -5,11 +5,10 @@ import GitHubCalendarComponent from './GitHubCalendar';
 import TypeWriterComponent from './TypeWriterComponent';
 import FramerMotionComponent from './FramerMotionComponent';
 import Footer from './Footer';
-import VisitorStats from './VisitorStats';
 
 const Body = () => {
     return (
-        <div className="h-screen w-screen overflow-y-auto " >
+        <div className="w-full h-auto" >
             <div className='p-3 px-5 mt-12 font-bold text-xl text-color' >
                 Hi,I'm
             </div>

@@ -175,7 +175,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed bottom-20 right-4 z-50 w-[320px] xs:w-[350px] sm:w-[400px] h-[500px] max-h-[70vh] bg-slate-950/95 backdrop-blur-xl border border-slate-800/80 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-20 right-4 z-50 w-[335px] xs:w-[380px] sm:w-[450px] md:w-[480px] h-[500px] max-h-[70vh] bg-slate-950/95 backdrop-blur-xl border border-slate-800/80 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
           >
             <div className="flex items-center justify-between px-5 py-4 bg-slate-900/60 border-b border-slate-800/80">
               <div className="flex items-center gap-2.5">
@@ -206,7 +206,7 @@ export default function Chatbot() {
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar">
               {messages.map((msg, index) => (
                 <ChatMessage key={index} role={msg.role} content={msg.content} />
               ))}

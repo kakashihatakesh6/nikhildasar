@@ -69,8 +69,8 @@ export default function Home() {
         </a>
       </div>
 
-      <div className='content flex' >
-        <div className='w-[640px] m-auto border-[0.05px] border-opacity-5 border-white h-[auto] relative'>
+      <div className='content overflow-y-auto no-scrollbar' >
+        <div className='w-full max-w-[95%] md:w-[760px] mx-auto my-12 border-[0.05px] border-opacity-5 border-white h-auto relative'>
 
           {/* Mobile Hamburger menu shifted to the top right */}
           <div className='px-4 pt-4 absolute right-4 top-2 text-white md:hidden z-50' >
