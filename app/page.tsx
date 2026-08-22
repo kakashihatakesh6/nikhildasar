@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import VisitorCounter from '@/components/VisitorCounter'
+import Chatbot from '@/components/chatbot/Chatbot'
 import { MessageCircle, FileText, Linkedin, Github, Twitter, Mail } from 'lucide-react'
 import { Bebas_Neue } from 'next/font/google'
 
@@ -168,6 +169,7 @@ export default function Home() {
         </div>
       </div>
       <VisitorCounter />
+      <Chatbot />
     </div>
 
   );
