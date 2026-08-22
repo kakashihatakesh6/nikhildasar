@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import VisitorCounter from '@/components/VisitorCounter'
+import Chatbot from '@/components/chatbot/Chatbot'
 import { MessageCircle, FileText, Linkedin, Github, Twitter, Mail } from 'lucide-react'
 import { Bebas_Neue } from 'next/font/google'
 
@@ -45,22 +46,22 @@ export default function Home() {
 
       {/* Top Right Desktop Navigation Menu */}
       <div className="absolute top-6 right-8 z-50 hidden md:flex items-center gap-10 select-none">
-        <a 
-          href="#about" 
+        <a
+          href="#about"
           className={`${bebasNeue.className} relative pb-1 group/nav text-xl lg:text-2xl tracking-[0.12em] text-slate-100 hover:text-yellow-400 hover:scale-[1.03] active:scale-95 transition-all duration-300 cursor-pointer`}
         >
           <span>About</span>
           <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover/nav:w-[70%] h-[2.5px] bg-yellow-400 rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(234,179,8,0.8)] pointer-events-none" />
         </a>
-        <a 
-          href="#work" 
+        <a
+          href="#work"
           className={`${bebasNeue.className} relative pb-1 group/nav text-xl lg:text-2xl tracking-[0.12em] text-slate-100 hover:text-yellow-400 hover:scale-[1.03] active:scale-95 transition-all duration-300 cursor-pointer`}
         >
           <span>Work</span>
           <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover/nav:w-[70%] h-[2.5px] bg-yellow-400 rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(234,179,8,0.8)] pointer-events-none" />
         </a>
-        <a 
-          href="#contact" 
+        <a
+          href="#contact"
           className={`${bebasNeue.className} relative pb-1 group/nav text-xl lg:text-2xl tracking-[0.12em] text-slate-100 hover:text-yellow-400 hover:scale-[1.03] active:scale-95 transition-all duration-300 cursor-pointer`}
         >
           <span>Contact</span>
@@ -68,29 +69,28 @@ export default function Home() {
         </a>
       </div>
 
-      <div className='content flex' >
-        <div className='w-[640px] m-auto border-[0.05px] border-opacity-5 border-white h-[auto] relative'>
+      {/* Mobile Hamburger menu shifted to the top right, matching logo height */}
+      <div className='absolute right-6 top-6 text-white md:hidden z-50' >
+        <Sheet>
+          <SheetTrigger> <img src="/burger.png" alt="" /> </SheetTrigger>
+          <SheetContent className='bg-slate-950 bg-opacity-40 border-none text-slate-400' >
+            <SheetHeader>
+              <SheetTitle className='text-slate-400 text-center text-xl'>CONNECT WITH ME</SheetTitle>
+              <SheetDescription className='text-slate-400'>
+                <div className='text-slate-400 flex flex-col w-[50px] m-auto h-70% justify-evenly gap-6'>
+                  <div><a target='_blank' rel="noopener noreferrer" href={'https://twitter.com/Kakashish6'}><img src="/twitterWhite.png" className='cursor-pointer mt-8' width={37} alt="" /></a></div>
+                  <div><a target='_blank' rel="noopener noreferrer" href={'https://github.com/kakashihatakesh6'}><img src="/githubwhite.png" className='cursor-pointer' width={37} alt="" /></a></div>
+                  <div><a target='_blank' rel="noopener noreferrer" href={'https://www.linkedin.com/in/nikhil-dasar-baa2a5217/'}> <img src="/linkedinwhite.png" className='cursor-pointer' width={37} alt="" /></a></div>
+                  <div className='h-[100px] border border-white w-[1px] ml-5'></div>
+                </div>
+              </SheetDescription>
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
+      </div>
 
-          {/* Mobile Hamburger menu shifted to the top right */}
-          <div className='px-4 pt-4 absolute right-4 top-2 text-white md:hidden z-50' >
-            <Sheet>
-              <SheetTrigger> <img src="/burger.png" alt="" /> </SheetTrigger>
-              <SheetContent className='bg-slate-950 bg-opacity-40 border-none text-slate-400' >
-                <SheetHeader>
-                  <SheetTitle className='text-slate-400 text-center text-xl'>CONNECT WITH ME</SheetTitle>
-                  <SheetDescription className='text-slate-400'>
-                    <div className='text-slate-400 flex flex-col w-[50px] m-auto h-70% justify-evenly gap-6'>
-                      <div><a target='_blank' rel="noopener noreferrer" href={'https://twitter.com/Kakashish6'}><img src="/twitterWhite.png" className='cursor-pointer mt-8' width={37} alt="" /></a></div>
-                      <div><a target='_blank' rel="noopener noreferrer" href={'https://github.com/kakashihatakesh6'}><img src="/githubwhite.png" className='cursor-pointer' width={37} alt="" /></a></div>
-                      <div><a target='_blank' rel="noopener noreferrer" href={'https://www.linkedin.com/in/nikhil-dasar-baa2a5217/'}> <img src="/linkedinwhite.png" className='cursor-pointer' width={37} alt="" /></a></div>
-                      <div className='h-[100px] border border-white w-[1px] ml-5'></div>
-                    </div>
-                  </SheetDescription>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
-          </div>
-
+      <div className='content overflow-y-auto no-scrollbar' >
+        <div className='w-full max-w-[95%] md:w-[760px] mx-auto mt-6 md:mt-12 mb-12 border-[0.05px] border-opacity-5 border-white h-auto relative'>
           <Content />
         </div>
 
@@ -168,6 +168,7 @@ export default function Home() {
         </div>
       </div>
       <VisitorCounter />
+      <Chatbot />
     </div>
 
   );

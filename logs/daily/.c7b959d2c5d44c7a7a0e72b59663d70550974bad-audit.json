@@ -6,19 +6,9 @@
     "auditLog": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\daily\\.c7b959d2c5d44c7a7a0e72b59663d70550974bad-audit.json",
     "files": [
         {
-            "date": 1784657150868,
-            "name": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\daily\\2026-07-21-app.log",
-            "hash": "4b36acb3d8f0de11a2409ea677e57349b3aae629bf1c9a1ffa9a68c9428d799d"
-        },
-        {
-            "date": 1784698515557,
-            "name": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\daily\\2026-07-22-app.log",
-            "hash": "ca6e55b2cad0690821e90e9b7cec8a80e4232357dee28ec136e869ac5c191464"
-        },
-        {
-            "date": 1785676756626,
-            "name": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\daily\\2026-08-02-app.log",
-            "hash": "e5fe908d531989f0128e142070301be025fa0eaa28ae2d655f1c9723891553b6"
+            "date": 1787385865034,
+            "name": "C:\\Users\\Nikhil\\Documents\\GitHub\\nikhildasar\\logs\\daily\\2026-08-22-app.log",
+            "hash": "eb1852cf2dad31662068c9259144ec37e8ca6fbbdc10ef85fe333262b0c6ba03"
         }
     ],
     "hashType": "sha256"
