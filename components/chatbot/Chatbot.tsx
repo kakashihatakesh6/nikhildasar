@@ -32,8 +32,8 @@ const QUICK_REPLIES = [
   "Talk to a person 👤"
 ];
 
-// High-fidelity custom robot avatar resembling MBot
-const MBotAvatar = () => (
+// High-fidelity custom robot avatar resembling AI assistant
+const AIAssistantAvatar = () => (
   <div className="w-9 h-9 rounded-full bg-[#FEF3C7] flex items-center justify-center border border-[#FDE68A]/30 select-none relative flex-shrink-0">
     <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-amber-600 w-[22px] h-[22px]">
       {/* Sprout leaves on top */}
@@ -186,13 +186,13 @@ export default function Chatbot() {
   // Utility to download chat history
   const handleDownloadTranscript = () => {
     const text = messages
-      .map(msg => `${msg.role === 'user' ? 'User' : 'MBot'}: ${msg.content}`)
+      .map(msg => `${msg.role === 'user' ? 'User' : 'AI Assistant'}: ${msg.content}`)
       .join('\n\n');
     const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'mbot_chat_transcript.txt';
+    link.download = 'ai_assistant_transcript.txt';
     link.click();
     URL.revokeObjectURL(url);
     setIsDropdownOpen(false);
@@ -234,7 +234,7 @@ export default function Chatbot() {
               }
             }}
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
-            className="fixed bottom-22 right-6 z-50 flex items-center gap-2 bg-yellow-400 text-black px-4 py-2.5 rounded-2xl shadow-xl select-none font-bold text-xs uppercase tracking-wider cursor-pointer border border-yellow-350"
+            className="fixed bottom-24 right-6 z-50 flex items-center gap-2 bg-yellow-400 text-black px-4 py-2.5 rounded-2xl shadow-xl select-none font-bold text-xs uppercase tracking-wider cursor-pointer border border-yellow-300"
             onClick={() => setIsOpen(true)}
           >
             <span className="relative flex h-2 w-2">
@@ -299,7 +299,7 @@ export default function Chatbot() {
                 >
                   <ChevronLeft className="w-5 h-5 stroke-[2.2]" />
                 </button>
-                <MBotAvatar />
+                <AIAssistantAvatar />
                 <div>
                   <h3 className="font-bold text-slate-800 text-[15px] leading-tight">AI assistant</h3>
                   <span className="text-[11px] text-slate-400">Chat with Nikhil's AI assistant</span>
@@ -393,7 +393,7 @@ export default function Chatbot() {
               <div className="bg-[#F4F6F6] rounded-2xl p-3 mx-0.5 flex items-start gap-2.5 border border-[#E2E8F0] shadow-sm select-none">
                 <Info className="w-4 h-4 text-yellow-500 flex-shrink-0 mt-0.5" />
                 <span className="text-slate-500 text-[11px] leading-relaxed italic font-medium">
-                  This chat session is recorded or reviewed by Nikhil for training and portfolio presentation purposes.
+                  This AI assistant is a portfolio project showcasing Nikhil's experience with AI, RAG, LLM and full-stack development.
                 </span>
               </div>
 

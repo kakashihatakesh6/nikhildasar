@@ -334,3 +334,15 @@
 {"timestamp":"22/08/2026, 16:21:10","level":"info","message":"LLM requested tool calls: [{\"name\":\"getExperience\",\"args\":{\"input\":\"\"},\"type\":\"tool_call\",\"id\":\"fc_f8fbdd77-e8c1-4b84-bb10-5604f7b9afd7\"}]"}
 {"timestamp":"22/08/2026, 16:21:10","level":"info","message":"Executing tool: getExperience with args: {\"input\":\"\"}"}
 {"timestamp":"22/08/2026, 16:21:10","level":"info","message":"Calling Groq LLM with tool outputs..."}
+{"timestamp":"22/08/2026, 16:26:02","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:26:02","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:26:03","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:26:03","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:26:14","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:26:14","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:26:15","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:26:15","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:30:09","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:30:09","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:30:11","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:30:11","level":"info","message":"Client IP =>","clientIp":"::1"}

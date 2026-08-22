@@ -185,7 +185,7 @@ export default function ChatMessage({ role, content }: MessageProps) {
       </div>
       {!isUser && (
         <span className="text-[10px] text-slate-400 mt-1 ml-2 font-medium">
-          MBot
+          AI assistant
         </span>
       )}
     </div>

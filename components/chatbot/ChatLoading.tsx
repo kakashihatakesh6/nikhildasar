@@ -9,7 +9,7 @@ export default function ChatLoading() {
         <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
       </div>
       <span className="text-[10px] text-slate-400 mt-1 ml-2 font-medium">
-        MBot
+        AI assistant
       </span>
     </div>
   );
