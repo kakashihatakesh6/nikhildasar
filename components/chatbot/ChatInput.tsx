@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -16,22 +16,33 @@ export default function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
     setValue('');
   };
 
+  const isValueEmpty = !value.trim();
+
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 p-3 bg-slate-950/60 border-t border-slate-800/80">
+    <form 
+      onSubmit={handleSubmit} 
+      className="border border-[#E2E8F0] bg-white rounded-full px-4 py-1.5 mx-4 mb-4 flex items-center justify-between shadow-sm focus-within:border-slate-350 transition-all duration-200"
+    >
       <input
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         disabled={disabled}
-        placeholder={disabled ? "Generating response..." : "Ask me anything about Nikhil..."}
-        className="flex-1 bg-slate-900 border border-slate-800 text-white placeholder-slate-500 rounded-xl px-4 py-2.5 text-xs md:text-sm focus:outline-none focus:border-yellow-400/60 transition-all duration-300 disabled:opacity-50"
+        placeholder="Message..."
+        className="w-full bg-transparent border-none text-slate-800 placeholder-slate-400 text-sm focus:outline-none focus:ring-0 focus:border-none p-1.5 disabled:opacity-50"
       />
+      
       <button
         type="submit"
-        disabled={disabled || !value.trim()}
-        className="bg-yellow-400 hover:bg-yellow-350 disabled:bg-slate-800 disabled:text-slate-600 text-black px-4 py-2.5 rounded-xl flex items-center justify-center transition-all duration-300 active:scale-95 disabled:scale-100 cursor-pointer disabled:cursor-not-allowed"
+        disabled={disabled || isValueEmpty}
+        className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+          isValueEmpty 
+            ? 'bg-[#E2E8F0] text-white cursor-not-allowed' 
+            : 'bg-yellow-400 hover:bg-yellow-350 text-black cursor-pointer active:scale-95'
+        }`}
+        title="Send message"
       >
-        <Send className="w-4 h-4" />
+        <ArrowUp className="w-4 h-4 stroke-[2.5]" />
       </button>
     </form>
   );

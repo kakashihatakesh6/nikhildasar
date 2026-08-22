@@ -32,9 +32,9 @@ export default function ChatMessage({ role, content }: MessageProps) {
 
         const token = match[0];
         if (token.startsWith('**') && token.endsWith('**')) {
-          parts.push(<strong key={keyCounter++} className="font-extrabold text-yellow-400">{token.slice(2, -2)}</strong>);
+          parts.push(<strong key={keyCounter++} className="font-bold text-slate-900">{token.slice(2, -2)}</strong>);
         } else if (token.startsWith('`') && token.endsWith('`')) {
-          parts.push(<code key={keyCounter++} className="bg-slate-950 px-1.5 py-0.5 rounded text-emerald-400 font-mono text-xs">{token.slice(1, -1)}</code>);
+          parts.push(<code key={keyCounter++} className="bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded font-mono text-xs border border-slate-200">{token.slice(1, -1)}</code>);
         } else if (token.startsWith('[') && token.includes('](')) {
           const closeBracket = token.indexOf(']');
           const linkText = token.substring(1, closeBracket);
@@ -45,7 +45,7 @@ export default function ChatMessage({ role, content }: MessageProps) {
               href={linkUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors break-all"
+              className="text-amber-600 hover:text-amber-700 underline font-semibold transition-colors break-all"
             >
               {linkText}
             </a>
@@ -70,22 +70,22 @@ export default function ChatMessage({ role, content }: MessageProps) {
       const bodyRows = hasHeader ? rows.slice(1) : rows;
 
       return (
-        <div key={`table-wrapper-${keyIndex}`} className="w-full overflow-x-auto my-3 border border-slate-800 rounded-xl bg-slate-950/40">
-          <table className="min-w-full divide-y divide-slate-850 text-left text-xs">
+        <div key={`table-wrapper-${keyIndex}`} className="w-full overflow-x-auto my-3 border border-slate-200 rounded-xl bg-white">
+          <table className="min-w-full divide-y divide-slate-200 text-left text-xs">
             {hasHeader && (
-              <thead className="bg-slate-900/80 text-[10px] uppercase font-bold tracking-wider text-slate-400">
+              <thead className="bg-slate-50 text-[10px] uppercase font-bold tracking-wider text-slate-500">
                 <tr>
                   {headers.map((h, i) => (
-                    <th key={i} className="px-3 py-2 border-b border-slate-800 font-bold whitespace-nowrap">
+                    <th key={i} className="px-3 py-2 border-b border-slate-200 font-bold whitespace-nowrap">
                       {parseFormat(h)}
                     </th>
                   ))}
                 </tr>
               </thead>
             )}
-            <tbody className="divide-y divide-slate-900 text-slate-300">
+            <tbody className="divide-y divide-slate-100 text-slate-700">
               {bodyRows.map((row, ri) => (
-                <tr key={ri} className="hover:bg-slate-900/30 transition-colors">
+                <tr key={ri} className="hover:bg-slate-50/55 transition-colors">
                   {row.map((col, ci) => (
                     <td key={ci} className="px-3 py-2 leading-relaxed min-w-[80px]">
                       {parseFormat(col)}
@@ -139,7 +139,7 @@ export default function ChatMessage({ role, content }: MessageProps) {
           isInsideList = true;
         }
         elements.push(
-          <li key={`li-${index}`} className="ml-4 list-disc text-slate-300 text-xs md:text-sm leading-relaxed mb-1">
+          <li key={`li-${index}`} className="ml-4 list-disc text-[#1C2A38] text-xs md:text-sm leading-relaxed mb-1">
             {parseFormat(trimmed.substring(2))}
           </li>
         );
@@ -151,7 +151,7 @@ export default function ChatMessage({ role, content }: MessageProps) {
           elements.push(<div key={`br-${index}`} className="h-2" />);
         } else {
           elements.push(
-            <p key={`p-${index}`} className="text-slate-300 text-xs md:text-sm leading-relaxed mb-1.5 break-words">
+            <p key={`p-${index}`} className="text-[#1C2A38] text-xs md:text-sm leading-relaxed mb-1.5 break-words">
               {parseFormat(trimmed)}
             </p>
           );
@@ -169,17 +169,12 @@ export default function ChatMessage({ role, content }: MessageProps) {
   };
 
   return (
-    <div className={`flex items-end gap-2 mb-4 ${isUser ? 'justify-end' : 'justify-start'}`}>
-      {!isUser && (
-        <div className="w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center text-xs font-bold text-yellow-400 select-none">
-          AI
-        </div>
-      )}
+    <div className={`flex flex-col mb-4 ${isUser ? 'items-end' : 'items-start'}`}>
       <div
-        className={`px-4 py-3 rounded-2xl max-w-[90%] shadow-md border ${
+        className={`px-4 py-3 rounded-[20px] max-w-[90%] shadow-sm border ${
           isUser
-            ? 'bg-yellow-400 border-yellow-500 text-black rounded-br-none font-medium'
-            : 'bg-slate-900/80 border-slate-800/80 text-slate-200 rounded-bl-none'
+            ? 'bg-yellow-400 border-yellow-400 text-black font-semibold'
+            : 'bg-[#F4F6F6] border-[#F4F6F6] text-[#1C2A38]'
         }`}
       >
         {isUser ? (
@@ -188,6 +183,11 @@ export default function ChatMessage({ role, content }: MessageProps) {
           <div className="flex flex-col">{renderContent(content)}</div>
         )}
       </div>
+      {!isUser && (
+        <span className="text-[10px] text-slate-400 mt-1 ml-2 font-medium">
+          MBot
+        </span>
+      )}
     </div>
   );
 }
