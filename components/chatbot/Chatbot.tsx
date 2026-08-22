@@ -7,20 +7,30 @@ import ChatMessage, { MessageProps } from './ChatMessage';
 import ChatInput from './ChatInput';
 import ChatLoading from './ChatLoading';
 
+const PREDEFINED_QUERIES = [
+  "What are Nikhil's top technical skills?",
+  "Tell me about his recent projects.",
+  "What is his professional experience?",
+  "What are the live traffic statistics for this site?"
+];
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<MessageProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showTooltip, setShowTooltip] = useState(false);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Auto-scroll to latest message
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, loading]);
 
+  // Load welcome message on startup
   useEffect(() => {
     setMessages([
       {
@@ -29,6 +39,21 @@ export default function Chatbot() {
       }
     ]);
   }, []);
+
+  // Show tooltip after a brief delay on load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowTooltip(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Dismiss tooltip when chat is opened
+  useEffect(() => {
+    if (isOpen) {
+      setShowTooltip(false);
+    }
+  }, [isOpen]);
 
   const handleSendMessage = async (text: string) => {
     if (!text.trim()) return;
@@ -83,16 +108,66 @@ export default function Chatbot() {
 
   return (
     <>
+      {/* Floating Animated Tooltip */}
+      <AnimatePresence>
+        {showTooltip && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 15 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1, 
+              y: 0,
+              transition: {
+                type: 'spring',
+                stiffness: 400,
+                damping: 25
+              }
+            }}
+            exit={{ opacity: 0, scale: 0.8, y: 10 }}
+            className="fixed bottom-36 right-4 z-50 flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-4 py-2.5 rounded-2xl shadow-xl select-none font-bold text-xs uppercase tracking-wider cursor-pointer border border-yellow-350"
+            onClick={() => setIsOpen(true)}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+            </span>
+            <span>Ask my AI! 👋</span>
+            
+            <div className="absolute top-full right-5 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-amber-500" />
+            
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowTooltip(false);
+              }}
+              className="ml-2 hover:bg-black/10 rounded p-0.5 transition-colors"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Chat Button with subtle periodic wiggle pulse */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="fixed bottom-20 right-4 z-50 w-12 h-12 rounded-full bg-yellow-400 hover:bg-yellow-350 text-black shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300"
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.92 }}
+        animate={!isOpen && showTooltip ? {
+          scale: [1, 1.1, 1, 1.1, 1],
+          transition: {
+            repeat: Infinity,
+            repeatDelay: 4,
+            duration: 1.5
+          }
+        } : {}}
+        className="fixed bottom-20 right-4 z-50 w-12 h-12 rounded-full bg-yellow-400 hover:bg-yellow-350 text-black shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 border border-yellow-300/40"
         aria-label="Toggle Chatbot"
       >
         {isOpen ? <X className="w-5 h-5" /> : <MessageSquare className="w-5 h-5" />}
       </motion.button>
 
+      {/* Chat Window Panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -136,6 +211,26 @@ export default function Chatbot() {
                 <ChatMessage key={index} role={msg.role} content={msg.content} />
               ))}
               
+              {/* Predefined / Suggested queries rendered when conversation starts */}
+              {messages.length === 1 && !loading && (
+                <div className="flex flex-col gap-2 mt-2 pl-10 pr-2">
+                  <span className="text-[9px] uppercase font-bold tracking-widest text-slate-500 mb-1">Suggested Questions:</span>
+                  <div className="flex flex-col gap-2">
+                    {PREDEFINED_QUERIES.map((query, idx) => (
+                      <motion.button
+                        key={idx}
+                        onClick={() => handleSendMessage(query)}
+                        whileHover={{ scale: 1.01, x: 2 }}
+                        whileTap={{ scale: 0.99 }}
+                        className="text-left text-xs bg-slate-900/60 hover:bg-yellow-400 hover:text-black border border-slate-850 hover:border-yellow-400/40 px-3.5 py-2.5 rounded-xl text-slate-300 transition-all duration-300 font-bold cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(234,179,8,0.15)]"
+                      >
+                        {query}
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {loading && <ChatLoading />}
 
               {error && (

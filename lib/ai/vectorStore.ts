@@ -1,6 +1,7 @@
 import { MongoDBAtlasVectorSearch } from '@langchain/mongodb';
 import { connectToDatabase } from '../mongodb';
 import { getEmbeddings } from './embeddings';
+import logger from '../logger';
 
 const collectionName = 'knowledge_chunks';
 const indexName = process.env.MONGODB_VECTOR_INDEX || 'vector_index';
@@ -9,8 +10,15 @@ export async function getVectorStore(): Promise<MongoDBAtlasVectorSearch> {
   const { client, db } = await connectToDatabase();
   const collection = db.collection(collectionName);
   
+  try {
+    const dbName = db.databaseName;
+    const docCount = await collection.countDocuments();
+    logger.info(`[VectorStore Debug] Connected DB: "${dbName}", Collection: "${collectionName}", Total Docs: ${docCount}`);
+  } catch (logError) {
+    logger.error('[VectorStore Debug] Failed to read database stats:', logError);
+  }
+  
   // Mock collection.db.client to satisfy `@langchain/mongodb` constructor expectations.
-  // We also mock client.appendMetadata if it is not present on the connection.
   const mockedClient = Object.create(client);
   if (typeof mockedClient.appendMetadata !== 'function') {
     mockedClient.appendMetadata = () => {};

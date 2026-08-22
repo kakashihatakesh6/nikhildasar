@@ -43,7 +43,7 @@ export default function VisitorCounter() {
       whileHover={{ scale: isExpanded ? 1 : 1.05 }}
       transition={{ duration: 0.3 }}
       onClick={() => setIsExpanded(!isExpanded)}
-      className={`fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-black bg-opacity-70 backdrop-blur-md border border-gray-600 ${isExpanded ? 'rounded-xl' : 'rounded-md'} py-1.5 px-3 text-white shadow-lg cursor-pointer overflow-hidden transition-all duration-300 ${isExpanded ? 'w-auto h-auto' : 'h-14'}`}
+      className={`fixed bottom-4 left-4 z-50 flex items-center gap-2 bg-black bg-opacity-70 backdrop-blur-md border border-gray-600 ${isExpanded ? 'rounded-xl' : 'rounded-md'} py-1.5 px-3 text-white shadow-lg cursor-pointer overflow-hidden transition-all duration-300 ${isExpanded ? 'w-auto h-auto' : 'h-14'}`}
     >
       <motion.div
         initial={{ scale: 0.8 }}
