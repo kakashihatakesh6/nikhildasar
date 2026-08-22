@@ -147,11 +147,11 @@ const projects: ProjectProps[] = [
     ],
   },
   {
-    title: "Spenza AI - (Expense Tracker - Android App)",
+    title: "Spendly AI - (Expense Tracker - Android App)",
     link: "https://github.com/kakashihatakesh6/spenza-ai/",
     image: "/mobile/spenza.png",
     category: "mobile",
-    downloadUrl: "https://drive.google.com/file/d/1xVBxMh5j5B5HQ62YCztk7x1uJatvt4KF/view?usp=drive_link",
+    downloadUrl: "https://drive.google.com/file/d/1QT-Y3FBR1lDYr19KLTZcRYnzCve4fxpa/view?usp=drive_link",
     videoUrl: "/mobile/spenza.mp4",
     description: "A mobile financial dashboard application designed to manage daily expenditures, structure monthly budgeting, and generate smart statistical insights.",
     features: [
@@ -265,7 +265,7 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
 
   let mainTitle = title;
   let subTitle = "";
-  
+
   if (title.includes(" - ")) {
     const parts = title.split(" - ");
     mainTitle = parts[0];
@@ -279,13 +279,13 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
     mainTitle = parts[0];
     subTitle = parts.slice(1).join("- ").trim();
   }
-  
+
   if (subTitle.startsWith('(') && subTitle.endsWith(')')) {
     subTitle = subTitle.slice(1, -1).trim();
   }
 
   return (
-    <div 
+    <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleCardClick}
@@ -297,11 +297,11 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
             {category === 'web' ? 'Web Project' : 'Mobile App'}
           </span>
         </div>
-        
+
         <h3 className="text-[18px] font-bold text-slate-100 line-clamp-1 group-hover:text-yellow-400 transition-colors duration-300" title={mainTitle}>
           {mainTitle}
         </h3>
-        
+
         {subTitle && (
           <p className="text-[11px] text-slate-400 font-medium line-clamp-1 mt-0.5 mb-3">
             {subTitle}
@@ -310,10 +310,10 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
         {!subTitle && <div className="h-[17px] mt-0.5 mb-3"></div>}
 
         <div className="w-full h-[180px] overflow-hidden rounded-xl bg-slate-950/50 flex items-center justify-center border border-slate-800/50 relative group/img">
-          <img 
-            src={image} 
-            className="opacity-80 group-hover:opacity-100 max-w-[90%] max-h-[85%] object-contain transition-all duration-500 group-hover:scale-105" 
-            alt={title} 
+          <img
+            src={image}
+            className="opacity-80 group-hover:opacity-100 max-w-[90%] max-h-[85%] object-contain transition-all duration-500 group-hover:scale-105"
+            alt={title}
           />
           {/* Interactive Hover Overlay */}
           <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
@@ -324,7 +324,7 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
           </div>
         </div>
       </div>
-      
+
       <div className="mt-4 flex flex-col flex-grow justify-end">
         <div className="text-[9px] font-bold tracking-widest text-slate-500 mb-1.5 uppercase">TECH STACK</div>
         <div className="flex flex-wrap gap-1.5 justify-start max-h-[80px] overflow-y-auto pr-1 no-scrollbar">
@@ -332,16 +332,16 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
             <TechStackItem key={index} {...tech} />
           ))}
         </div>
-        
+
         <hr className="w-full my-4 border-slate-800/50" />
-        
+
         <div className="flex gap-2.5">
           {category === 'web' ? (
             <>
-              <a 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                href={link} 
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={link}
                 onClick={(e) => e.stopPropagation()}
                 className={`${github ? 'flex-1' : 'w-full'} flex items-center justify-center gap-1.5 py-2 px-3 bg-yellow-400 hover:bg-yellow-350 text-black font-extrabold rounded-xl transition-all duration-200 text-xs shadow-md shadow-yellow-400/5 hover:shadow-lg hover:shadow-yellow-400/15 active:scale-[0.98]`}
               >
@@ -349,10 +349,10 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
               {github && (
-                <a 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  href={github} 
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={github}
                   onClick={(e) => e.stopPropagation()}
                   className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-slate-950 border border-slate-800/60 hover:bg-slate-900 hover:border-slate-700 text-slate-300 font-bold rounded-xl transition-all duration-200 text-xs active:scale-[0.98]"
                 >
@@ -363,20 +363,20 @@ const Project: React.FC<ProjectCardProps> = ({ title, link, image, category, tec
             </>
           ) : (
             <>
-              <a 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                href={downloadUrl || `${link}/releases`} 
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={downloadUrl || `${link}/releases`}
                 onClick={(e) => e.stopPropagation()}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold rounded-xl transition-all duration-200 text-xs shadow-md shadow-yellow-400/5 hover:shadow-lg hover:shadow-yellow-400/15 active:scale-[0.98]"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download APK</span>
               </a>
-              <a 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                href={link} 
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={link}
                 onClick={(e) => e.stopPropagation()}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-slate-950 border border-slate-800/60 hover:bg-slate-900 hover:border-slate-700 text-slate-300 font-bold rounded-xl transition-all duration-200 text-xs active:scale-[0.98]"
               >
@@ -424,7 +424,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
   let mainTitle = project.title;
   let subTitle = "";
-  
+
   if (project.title.includes(" - ")) {
     const parts = project.title.split(" - ");
     mainTitle = parts[0];
@@ -438,7 +438,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
     mainTitle = parts[0];
     subTitle = parts.slice(1).join("- ").trim();
   }
-  
+
   if (subTitle.startsWith('(') && subTitle.endsWith(')')) {
     subTitle = subTitle.slice(1, -1).trim();
   }
@@ -474,27 +474,25 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
         {/* LEFT PANEL: Media (Video / Pics) */}
         <div className="w-full md:w-[55%] h-[40%] md:h-full bg-slate-950 flex flex-col justify-between relative border-b md:border-b-0 md:border-r border-slate-800/50">
-          
+
           {/* Media Switcher Tab */}
           <div className="absolute top-4 left-4 z-10 flex bg-slate-900/90 backdrop-blur-md p-0.5 rounded-full border border-slate-800/80">
             <button
               onClick={() => setActiveTab('video')}
-              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all duration-300 ${
-                activeTab === 'video'
+              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all duration-300 ${activeTab === 'video'
                   ? 'bg-yellow-400 text-black shadow-md shadow-yellow-400/10'
                   : 'text-slate-400 hover:text-slate-200'
-              }`}
+                }`}
             >
               <Play className="w-3.5 h-3.5" />
               <span>Video Demo</span>
             </button>
             <button
               onClick={() => setActiveTab('gallery')}
-              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all duration-300 ${
-                activeTab === 'gallery'
+              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase transition-all duration-300 ${activeTab === 'gallery'
                   ? 'bg-yellow-400 text-black shadow-md shadow-yellow-400/10'
                   : 'text-slate-400 hover:text-slate-200'
-              }`}
+                }`}
             >
               <ImageIcon className="w-3.5 h-3.5" />
               <span>Gallery</span>
@@ -507,13 +505,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
               // Video Demo Area
               project.videoUrl ? (
                 <div className="w-full h-full flex items-center justify-center p-4">
-                  <video 
-                    src={project.videoUrl} 
+                  <video
+                    src={project.videoUrl}
                     className="w-full max-h-full rounded-xl object-contain shadow-2xl border border-slate-800"
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                     controls
                   />
                 </div>
@@ -524,7 +522,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     <span>Interactive Auto-Scroll Demo</span>
                   </div>
-                  
+
                   {project.category === 'web' ? (
                     /* Web Browser Mockup Frame */
                     <div className="w-full max-w-[420px] aspect-[16/10] bg-slate-900 border border-slate-700/60 rounded-xl overflow-hidden flex flex-col shadow-2xl">
@@ -542,10 +540,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                       {/* Scrolling Browser Screen content */}
                       <div className="flex-1 w-full bg-slate-950 overflow-hidden relative select-none">
                         <div className="absolute inset-0 overflow-hidden flex justify-center items-start">
-                          <img 
-                            src={project.image} 
-                            alt={project.title} 
-                            className="w-full h-auto object-contain opacity-90 select-none pointer-events-none" 
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-auto object-contain opacity-90 select-none pointer-events-none"
                             style={{ animation: 'autoScroll 20s linear infinite' }}
                           />
                         </div>
@@ -561,9 +559,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                       {/* Scrolling Phone Screen content */}
                       <div className="flex-1 w-full bg-slate-950 overflow-hidden relative select-none pt-4">
                         <div className="absolute inset-0 overflow-hidden flex justify-center items-start">
-                          <img 
-                            src={project.image} 
-                            alt={project.title} 
+                          <img
+                            src={project.image}
+                            alt={project.title}
                             className="w-[90%] h-auto object-contain opacity-90 pt-2 select-none pointer-events-none"
                             style={{ animation: 'autoScrollMobile 15s linear infinite' }}
                           />
@@ -577,12 +575,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
               // Image Gallery View
               <div className="w-full h-full flex flex-col items-center justify-center p-2 relative group/gallery">
                 <div className="relative w-full max-h-[80%] flex items-center justify-center">
-                  <img 
-                    src={images[activeImageIndex]} 
-                    alt={`${project.title} screenshot ${activeImageIndex + 1}`} 
+                  <img
+                    src={images[activeImageIndex]}
+                    alt={`${project.title} screenshot ${activeImageIndex + 1}`}
                     className="max-w-[95%] max-h-full rounded-2xl object-contain shadow-2xl border border-slate-800/50"
                   />
-                  
+
                   {/* Slider Arrows */}
                   {images.length > 1 && (
                     <>
@@ -609,9 +607,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                       <button
                         key={i}
                         onClick={() => setActiveImageIndex(i)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          activeImageIndex === i ? 'w-5 bg-yellow-400' : 'bg-slate-700 hover:bg-slate-500'
-                        }`}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${activeImageIndex === i ? 'w-5 bg-yellow-400' : 'bg-slate-700 hover:bg-slate-500'
+                          }`}
                       />
                     ))}
                   </div>
@@ -636,7 +633,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-100 tracking-tight leading-tight hover:text-yellow-400 transition-colors duration-300">
               {mainTitle}
             </h2>
-            
+
             {/* Subtitle */}
             {subTitle && (
               <p className="text-xs text-slate-400 font-semibold mt-1 mb-5">
@@ -681,7 +678,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
           {/* Action Call to Action Footer */}
           <div>
             <hr className="w-full my-5 border-slate-800/50" />
-            
+
             <div className="flex gap-3">
               {project.category === 'web' ? (
                 <>
@@ -746,7 +743,7 @@ const LatestProjectSection = () => {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
-        videoRef.current.play().catch(() => {});
+        videoRef.current.play().catch(() => { });
       }
       setIsPlaying(!isPlaying);
     }
@@ -760,7 +757,7 @@ const LatestProjectSection = () => {
       {/* Glow Effects */}
       <div className="absolute -top-12 -right-12 w-48 h-48 bg-yellow-400/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-yellow-400/10 transition-all duration-500" />
       <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-blue-500/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-blue-500/10 transition-all duration-500" />
-      
+
       <div className="flex flex-col md:flex-row gap-6 items-center">
         {/* Info Column */}
         <div className="flex-1 flex flex-col justify-between h-full order-2 md:order-1 self-stretch">
@@ -779,7 +776,7 @@ const LatestProjectSection = () => {
             </div>
 
             <h3 className="text-xl md:text-2xl font-black text-slate-100 group-hover:text-yellow-400 transition-colors duration-300 leading-tight">
-              Spenza AI
+              Spendly AI
             </h3>
             <p className="text-xs text-slate-400 font-semibold mt-1 mb-4">
               AI-Powered Personal Expense Tracker
@@ -791,7 +788,7 @@ const LatestProjectSection = () => {
 
             <div className="space-y-2 mb-6">
               {project.features.slice(0, 3).map((feature, i) => (
-                <div key={i} className="flex items-start gap-2 text-xs text-slate-350">
+                <div key={i} className="flex items-start gap-2 text-xs text-slate-200">
                   <span className="text-yellow-400 font-bold select-none">✓</span>
                   <span>{feature}</span>
                 </div>
@@ -810,18 +807,18 @@ const LatestProjectSection = () => {
             <hr className="w-full my-4 border-slate-800/50" />
 
             <div className="flex gap-3">
-              <a 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href={project.downloadUrl}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 bg-yellow-400 hover:bg-yellow-350 text-black font-extrabold rounded-xl transition-all duration-200 text-xs shadow-md shadow-yellow-400/5 hover:shadow-lg hover:shadow-yellow-400/15 active:scale-[0.98]"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download APK</span>
               </a>
-              <a 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href={project.link}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 bg-slate-950 border border-slate-800/60 hover:bg-slate-900 hover:border-slate-700 text-slate-300 font-bold rounded-xl transition-all duration-200 text-xs active:scale-[0.98]"
               >
@@ -839,7 +836,7 @@ const LatestProjectSection = () => {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-slate-900 rounded-b-xl z-20 flex items-center justify-center">
               <div className="w-8 h-1 bg-slate-800 rounded-full"></div>
             </div>
-            
+
             {/* Glossy Overlay */}
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none z-10" />
 
@@ -854,9 +851,9 @@ const LatestProjectSection = () => {
                 muted
                 playsInline
               />
-              
+
               {/* Playback Toggle Hover Button */}
-              <div 
+              <div
                 className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 cursor-pointer"
                 onClick={handleTogglePlay}
               >
@@ -875,7 +872,7 @@ const LatestProjectSection = () => {
 const Work = () => {
   const [activeTab, setActiveTab] = useState<'web' | 'mobile'>('web');
   const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
-  
+
   const tabs = [
     { id: 'web', label: 'Web Projects' },
     { id: 'mobile', label: 'Mobile Apps' },
@@ -885,8 +882,8 @@ const Work = () => {
 
   return (
     <div className="mt-[5rem] h-[auto] w-[360px] md:w-[720px] flex flex-col" id="work">
-      <div 
-        className="stroke-yellow-300 text-[2.5rem] xs:text-[3rem] sm:text-[4rem] md:text-[6rem] font-extrabold z-0 opacity-80 text-transparent select-none leading-none mb-6 whitespace-nowrap" 
+      <div
+        className="stroke-yellow-300 text-[2.5rem] xs:text-[3rem] sm:text-[4rem] md:text-[6rem] font-extrabold z-0 opacity-80 text-transparent select-none leading-none mb-6 whitespace-nowrap"
         style={{ strokeWidth: "1.5px", WebkitTextStrokeWidth: "1.9px", WebkitTextStrokeColor: "yellow" }}
       >
         {"<"}Work {"/>"}
@@ -903,9 +900,8 @@ const Work = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-colors duration-300 ${
-                  isActive ? 'text-black' : 'text-slate-400 hover:text-slate-200'
-                }`}
+                className={`relative px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-colors duration-300 ${isActive ? 'text-black' : 'text-slate-400 hover:text-slate-200'
+                  }`}
               >
                 {isActive && (
                   <motion.span
@@ -922,7 +918,7 @@ const Work = () => {
       </div>
 
       {/* Projects Grid with Animations */}
-      <motion.div 
+      <motion.div
         layout
         className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-center m-auto"
       >
@@ -936,8 +932,8 @@ const Work = () => {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.25 }}
             >
-              <Project 
-                {...project} 
+              <Project
+                {...project}
                 onOpenModal={() => setSelectedProject(project)}
               />
             </motion.div>
@@ -948,9 +944,9 @@ const Work = () => {
       {/* Rich Details Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <ProjectModal 
-            project={selectedProject} 
-            onClose={() => setSelectedProject(null)} 
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
           />
         )}
       </AnimatePresence>

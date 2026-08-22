@@ -234,7 +234,7 @@ export default function Chatbot() {
               }
             }}
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
-            className="fixed bottom-24 right-6 z-50 flex items-center gap-2 bg-yellow-400 text-black px-4 py-2.5 rounded-2xl shadow-xl select-none font-bold text-xs uppercase tracking-wider cursor-pointer border border-yellow-300"
+            className="fixed bottom-24 right-4 sm:right-6 z-50 flex items-center gap-2 bg-yellow-400 text-black px-4 py-2.5 rounded-2xl shadow-xl select-none font-bold text-xs uppercase tracking-wider cursor-pointer border border-yellow-300"
             onClick={() => setIsOpen(true)}
           >
             <span className="relative flex h-2 w-2">
@@ -263,7 +263,7 @@ export default function Chatbot() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.92 }}
-        className="fixed bottom-5 right-6 z-50 w-14 h-14 rounded-full bg-yellow-400 hover:bg-yellow-350 text-black shadow-xl flex items-center justify-center cursor-pointer transition-all duration-300 border border-yellow-300/40"
+        className="fixed bottom-5 right-4 sm:right-6 z-50 w-14 h-14 rounded-full bg-yellow-400 hover:bg-yellow-350 text-black shadow-xl flex items-center justify-center cursor-pointer transition-all duration-300 border border-yellow-300/40"
         aria-label="Toggle Chatbot"
       >
         {isOpen ? (
@@ -277,17 +277,23 @@ export default function Chatbot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.95, width: isMobile ? '90vw' : (isExpanded ? 720 : 400) }}
+            initial={{ 
+              opacity: 0, 
+              y: 50, 
+              scale: 0.95, 
+              width: isMobile ? 340 : (isExpanded ? 720 : 400),
+              height: isMobile ? 480 : 'calc(100vh - 105px)'
+            }}
             animate={{ 
               opacity: 1, 
               y: 0, 
               scale: 1,
-              width: isMobile ? '90vw' : (isExpanded ? 720 : 400),
-              height: 'calc(100vh - 105px)'
+              width: isMobile ? 340 : (isExpanded ? 720 : 400),
+              height: isMobile ? 480 : 'calc(100vh - 105px)'
             }}
             exit={{ opacity: 0, y: 50, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 280, damping: 28 }}
-            className="fixed top-5 right-6 z-50 bg-white border border-[#E2E8F0] rounded-[24px] shadow-2xl flex flex-col overflow-hidden font-sans"
+            className="fixed sm:top-5 top-auto bottom-24 sm:bottom-auto right-4 sm:right-6 z-50 bg-white border border-[#E2E8F0] rounded-[24px] shadow-2xl flex flex-col overflow-hidden font-sans max-w-[90vw] max-h-[85vh]"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-3.5 bg-white border-b border-[#E2E8F0]">

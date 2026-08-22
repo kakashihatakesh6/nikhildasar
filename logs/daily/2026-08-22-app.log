@@ -346,3 +346,39 @@
 {"timestamp":"22/08/2026, 16:30:09","level":"info","message":"Client IP =>","clientIp":"::1"}
 {"timestamp":"22/08/2026, 16:30:11","level":"info","message":"headersList =>","testip":null,"testip2":null}
 {"timestamp":"22/08/2026, 16:30:11","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:38:56","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:38:56","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:38:58","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:38:58","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:42:33","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:42:33","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:42:35","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:42:35","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:42:47","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:42:47","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:42:50","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:42:50","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:44:13","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:44:13","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:44:14","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:44:14","level":"info","message":"Client IP =>","clientIp":"::1"}
+{"timestamp":"22/08/2026, 16:48:33","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:48:33","level":"info","message":"Client IP =>","clientIp":"10.28.177.154"}
+{"timestamp":"22/08/2026, 16:48:35","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 16:48:35","level":"info","message":"Client IP =>","clientIp":"10.28.177.154"}
+{"timestamp":"22/08/2026, 16:53:26","level":"info","message":"Received chat request: \"What are Nikhil's top technical skills?\""}
+{"timestamp":"22/08/2026, 16:53:26","level":"info","message":"Retrieving knowledge context for query: \"What are Nikhil's top technical skills?\""}
+{"timestamp":"22/08/2026, 16:53:26","level":"info","message":"Initializing MongoClient in development mode..."}
+{"timestamp":"22/08/2026, 16:53:27","level":"info","message":"[VectorStore Debug] Connected DB: \"portfolio\", Collection: \"knowledge_chunks\", Total Docs: 21"}
+{"timestamp":"22/08/2026, 16:53:29","level":"info","message":"Calling Groq LLM (initial turn)..."}
+{"timestamp":"22/08/2026, 16:53:30","level":"info","message":"LLM requested tool calls: [{\"name\":\"getSkills\",\"args\":{\"input\":\"\"},\"type\":\"tool_call\",\"id\":\"fc_2fcaadc3-7e6f-4f92-b5d3-a9c5f3cb4b81\"}]"}
+{"timestamp":"22/08/2026, 16:53:30","level":"info","message":"Executing tool: getSkills with args: {\"input\":\"\"}"}
+{"timestamp":"22/08/2026, 16:53:30","level":"info","message":"Calling Groq LLM with tool outputs..."}
+{"timestamp":"22/08/2026, 17:00:30","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 17:00:30","level":"info","message":"Client IP =>","clientIp":"10.28.177.154"}
+{"timestamp":"22/08/2026, 17:00:32","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 17:00:32","level":"info","message":"Client IP =>","clientIp":"10.28.177.154"}
+{"timestamp":"22/08/2026, 17:06:35","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 17:06:35","level":"info","message":"Client IP =>","clientIp":"10.28.177.154"}
+{"timestamp":"22/08/2026, 17:06:37","level":"info","message":"headersList =>","testip":null,"testip2":null}
+{"timestamp":"22/08/2026, 17:06:37","level":"info","message":"Client IP =>","clientIp":"10.28.177.154"}
