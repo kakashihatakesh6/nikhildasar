@@ -148,16 +148,16 @@ const projects: ProjectProps[] = [
   },
   {
     title: "Spendly AI - (Expense Tracker - Android App)",
-    link: "https://github.com/kakashihatakesh6/spenza-ai/",
+    link: "https://github.com/kakashihatakesh6/spendly-ai/",
     image: "/mobile/spenza.png",
     category: "mobile",
     downloadUrl: "https://drive.google.com/file/d/1QT-Y3FBR1lDYr19KLTZcRYnzCve4fxpa/view?usp=drive_link",
     videoUrl: "/mobile/spenza.mp4",
-    description: "A mobile financial dashboard application designed to manage daily expenditures, structure monthly budgeting, and generate smart statistical insights.",
+    description: "Spendly AI is an AI-powered personal expense tracker that helps users record daily expenses, manage monthly budgets, and get personalized insights into their spending patterns.",
     features: [
-      "Visual charts displaying transaction history categories and budget limits",
-      "Native device integration for attaching receipts and capturing photo invoices",
-      "Robust state storage with client authentication checks",
+      "Built Gemini 2.5 Flash-powered OCR to extract transaction details from receipts and payment screenshots for automated expense tracking.",
+      "Developed a LangChain RAG Agent with pgvector HNSW, embeddings, hybrid vector + full-text search, and contextual retrieval for personalized financial insights and knowledge retrieval.",
+      "Implemented an interactive SSE chatbot with agentic tool calling for financial insights, transaction updates, budget management, and personalized spending analysis.",
       "Automatic weekly budget summaries and financial alerts"
     ],
     techStack: [

@@ -71,15 +71,15 @@ This document details the software applications, tools, and platforms built by N
 
 ## Mobile Applications
 
-### 1. Spenza AI (Expense Tracker - Android App)
-* **GitHub Repository**: https://github.com/kakashihatakesh6/spenza-ai/
+### 1. Spendly AI (Expense Tracker - Android App)
+* **GitHub Repository**: https://github.com/kakashihatakesh6/spendly-ai/
 * **Download URL**: https://drive.google.com/file/d/1xVBxMh5j5B5HQ62YCztk7x1uJatvt4KF/view
 * **Tech Stack**: Next JS, React JS, Redux, Tailwind, NodeJS, Express, MongoDB, Razorpay
-* **Description**: A mobile financial dashboard application designed to manage daily expenditures, structure monthly budgeting, and generate smart statistical insights.
+* **Description**: Spendly AI is an AI-powered personal expense tracker that helps users record daily expenses, manage monthly budgets, and get personalized insights into their spending patterns.
 * **Key Features**:
-  * Visual charts displaying transaction history categories and budget limits.
-  * Native device integration for attaching receipts and capturing photo invoices.
-  * Robust state storage with client authentication checks.
+  * Built Gemini 2.5 Flash-powered OCR to extract transaction details from receipts and payment screenshots for automated expense tracking.
+  * Developed a LangChain RAG Agent with pgvector HNSW, embeddings, hybrid vector + full-text search, and contextual retrieval for personalized financial insights and knowledge retrieval.
+  * Implemented an interactive SSE chatbot with agentic tool calling for financial insights, transaction updates, budget management, and personalized spending analysis.
   * Automatic weekly budget summaries and financial alerts.
 
 ### 2. Shopify (E-Commerce - Android App)
